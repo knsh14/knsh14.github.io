@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts of knsh14</title>
-    <link>http://knsh14.github.io/</link>
+    <link>https://knsh14.github.io/</link>
     <description>Recent content on Posts of knsh14</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-ja</language>
     <lastBuildDate>Sat, 14 Sep 2019 01:01:53 +0900</lastBuildDate>
     
-	<atom:link href="http://knsh14.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://knsh14.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>HugoのデプロイをGitHub Actionsで行う</title>
-      <link>http://knsh14.github.io/posts/how-to-automate-deploying-hugo/</link>
+      <link>https://knsh14.github.io/posts/how-to-automate-deploying-hugo/</link>
       <pubDate>Sat, 14 Sep 2019 01:01:53 +0900</pubDate>
       
-      <guid>http://knsh14.github.io/posts/how-to-automate-deploying-hugo/</guid>
+      <guid>https://knsh14.github.io/posts/how-to-automate-deploying-hugo/</guid>
       <description>HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。
 自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。
 せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。
