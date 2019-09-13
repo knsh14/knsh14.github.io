@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts of knsh14</title>
+    <link>http://knsh14.github.io/</link>
+    <description>Recent content on Posts of knsh14</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-ja</language>
+    <lastBuildDate>Sat, 14 Sep 2019 01:01:53 +0900</lastBuildDate>
+    
+	<atom:link href="http://knsh14.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HugoのデプロイをGitHub Actionsで行う</title>
+      <link>http://knsh14.github.io/posts/how-to-automate-deploying-hugo/</link>
+      <pubDate>Sat, 14 Sep 2019 01:01:53 +0900</pubDate>
+      
+      <guid>http://knsh14.github.io/posts/how-to-automate-deploying-hugo/</guid>
+      <description>HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。
+自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。
+せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。
+なので、GitHub Actionsを使って作ってみることにしました。
+事前準備  記事を書く用のリポジトリ デプロイ先のリポジトリ GitHubのPersonal Access Token  repoの操作が可能な権限を付ける必要があります   記事を書く用のリポジトリはPrivateでも構いません。
+デプロイ先のリポジトリはUSERNAME.github.ioという名前にする必要があります
+記事のリポジトリにトークンを設定する 記事を書く用のリポジトリに事前準備で作成したPersonal Access Tokenを設定します。
+リポジトリのSettings -&amp;gt; Secretsを開き、「Add a new secret」を押して、Nameを「MY_GITHUB_ACCESS_TOKEN」Valueに先程のトークンを設定します。 この設定を入れないと、別のリポジトリにアクセスする権限を持てないので必ず設定する必要があります。
+詳しいドキュメントは本家のドキュメントを参照してください。
+記事のリポジトリにworkflowを設定する 記事のリポジトリのルートに移動して、.github/workflowsディレクトリを作成します。
+その中に次のようなワークフローを定義します。
+name: Go on: push: branches: - master jobs: build: name: Build runs-on: ubuntu-latest steps: - name: Set up Go 1.12 uses: actions/setup-go@v1 with: go-version: 1.12 id: go - name: Check out code into the Go module directory uses: actions/checkout@v1 - name: install hugo run: | go get -u github.</description>
+    </item>
+    
+  </channel>
+</rss>

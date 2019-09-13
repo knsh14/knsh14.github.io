@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HugoのデプロイをGitHub Actionsで行う &middot; Posts of knsh14</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.59.0-DEV" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="HugoのデプロイをGitHub Actionsで行う &middot; Posts of knsh14">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="HugoのデプロイをGitHub Actionsで行う &middot; Posts of knsh14">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href='http://knsh14.github.io/css/all.min.css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Posts of knsh14" href='http://knsh14.github.io/index.xml' />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://knsh14.github.io/">Posts of knsh14</a></h1>
+            <h2 class="brand-tagline"> blog for kenshi kamata </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/knsh14">
+                        <i class="fa fa-twitter"></i> Twitter
+                    </a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/knsh14">
+                        <i class="fa fa-github-alt"></i> Github
+                    </a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href='http://knsh14.github.io/index.xml'>
+                        <i class="fa fa-rss"></i> rss
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">14 Sep 2019, 01:01</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://knsh14.github.io/posts/how-to-automate-deploying-hugo/" class="post-title">HugoのデプロイをGitHub Actionsで行う</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        
+
+<p>HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。<br />
+自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。<br />
+せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。<br />
+なので、GitHub Actionsを使って作ってみることにしました。</p>
+
+<h1 id="事前準備">事前準備</h1>
+
+<ul>
+<li>記事を書く用のリポジトリ</li>
+<li>デプロイ先のリポジトリ</li>
+<li>GitHubのPersonal Access Token
+
+<ul>
+<li>repoの操作が可能な権限を付ける必要があります</li>
+</ul></li>
+</ul>
+
+<p>記事を書く用のリポジトリはPrivateでも構いません。<br />
+デプロイ先のリポジトリは<code>USERNAME.github.io</code>という名前にする必要があります</p>
+
+<h1 id="記事のリポジトリにトークンを設定する">記事のリポジトリにトークンを設定する</h1>
+
+<p>記事を書く用のリポジトリに事前準備で作成したPersonal Access Tokenを設定します。<br />
+リポジトリのSettings -&gt; Secretsを開き、「Add a new secret」を押して、Nameを「MY_GITHUB_ACCESS_TOKEN」Valueに先程のトークンを設定します。
+この設定を入れないと、別のリポジトリにアクセスする権限を持てないので必ず設定する必要があります。<br />
+詳しいドキュメントは<a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables">本家のドキュメント</a>を参照してください。</p>
+
+<h1 id="記事のリポジトリにworkflowを設定する">記事のリポジトリにworkflowを設定する</h1>
+
+<p>記事のリポジトリのルートに移動して、<code>.github/workflows</code>ディレクトリを作成します。<br />
+その中に次のようなワークフローを定義します。</p>
+
+<pre><code class="language-yaml">name: Go
+on:
+  push:
+    branches:
+    - master
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.12
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.12
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v1
+
+    - name: install hugo
+      run: |
+        go get -u github.com/gohugoio/hugo
+
+    - name: setup public repo
+      run: |
+          git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public
+
+    - name: Build
+      run: |
+        export PATH=$PATH:`go env GOPATH`/bin
+        git submodule init
+        git submodule update
+        hugo
+
+    - name: Push
+      run: |
+        export MSG=`git log --format=%B -n 1 HEAD`
+        cd public
+        git config --local user.name &quot;NAME&quot;
+        git config --local user.email &quot;EMAIL@gmail.com&quot;
+        git add .
+        git commit -m &quot;${MSG}&quot;
+        git push origin master
+</code></pre>
+
+<p>Goをベースにしたワークフローを利用します。
+setup public repoのステージでHugoをビルドした結果の静的ファイルが吐き出されるディレクトリを公開用のリポジトリで管理できるようにします。<br />
+Buildステージで環境変数のPATHにGoのバイナリのある場所も追加してHugoコマンドが使えるようにします。<br />
+Pushステージで記事用のリポジトリのコミットメッセージを取得して公開用のリポジトリのコミットメッセージにします。<br />
+以上で設定が完了したので記事用のリポジトリのmasterにpushするとActionsが起動して公開用のリポジトリに送信されます。</p>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src='http://knsh14.github.io/js/all.min.js'></script>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
