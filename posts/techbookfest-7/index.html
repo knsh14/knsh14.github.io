@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts of knsh14 &middot; Posts of knsh14</title>
+    <title>技術書典7に参加してきました &middot; Posts of knsh14</title>
 
-    <meta name="description" content="blog for kenshi kamata">
+    <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.59.0-DEV" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content="Posts of knsh14 &middot; Posts of knsh14">
-    <meta name="twitter:description" content="blog for kenshi kamata">
+    <meta name="twitter:title" content="技術書典7に参加してきました &middot; Posts of knsh14">
+    <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Posts of knsh14 &middot; Posts of knsh14">
-    <meta property="og:description" content="blog for kenshi kamata">
+    <meta property="og:title" content="技術書典7に参加してきました &middot; Posts of knsh14">
+    <meta property="og:description" content="">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
@@ -70,7 +70,6 @@
         <div>
             
             <div class="posts">
-                
                 <h1 class="content-subhead">24 Sep 2019, 19:36</h1>
                 <section class="post">
                     <header class="post-header">
@@ -82,7 +81,7 @@
                             
                         </p>
                     </header>
-
+                    
                     <div class="post-description">
                         
 
@@ -189,118 +188,9 @@ textlintなどを使って機械的にレビューしていますが、細かい
 次は日本語がおかしいという指摘が半分くらいになるように頑張ります！</p>
 
                     </div>
+                    
                 </section>
-                
-                <h1 class="content-subhead">14 Sep 2019, 01:01</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://knsh14.github.io/posts/how-to-automate-deploying-hugo/" class="post-title">HugoのデプロイをGitHub Actionsで行う</a>
-
-                        <p class="post-meta">
-                            
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        
-
-<p>HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。<br />
-自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。<br />
-せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。<br />
-なので、GitHub Actionsを使って作ってみることにしました。</p>
-
-<h1 id="事前準備">事前準備</h1>
-
-<ul>
-<li>記事を書く用のリポジトリ</li>
-<li>デプロイ先のリポジトリ</li>
-<li>GitHubのPersonal Access Token
-
-<ul>
-<li>repoの操作が可能な権限を付ける必要があります</li>
-</ul></li>
-</ul>
-
-<p>記事を書く用のリポジトリはPrivateでも構いません。<br />
-デプロイ先のリポジトリは<code>USERNAME.github.io</code>という名前にする必要があります</p>
-
-<h1 id="記事のリポジトリにトークンを設定する">記事のリポジトリにトークンを設定する</h1>
-
-<p>記事を書く用のリポジトリに事前準備で作成したPersonal Access Tokenを設定します。<br />
-リポジトリのSettings -&gt; Secretsを開き、「Add a new secret」を押して、Nameを「MY_GITHUB_ACCESS_TOKEN」Valueに先程のトークンを設定します。
-この設定を入れないと、別のリポジトリにアクセスする権限を持てないので必ず設定する必要があります。<br />
-詳しいドキュメントは<a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables">本家のドキュメント</a>を参照してください。</p>
-
-<h1 id="記事のリポジトリにworkflowを設定する">記事のリポジトリにworkflowを設定する</h1>
-
-<p>記事のリポジトリのルートに移動して、<code>.github/workflows</code>ディレクトリを作成します。<br />
-その中に次のようなワークフローを定義します。</p>
-
-<pre><code class="language-yaml">name: Go
-on:
-  push:
-    branches:
-    - master
-jobs:
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-
-    - name: Set up Go 1.12
-      uses: actions/setup-go@v1
-      with:
-        go-version: 1.12
-      id: go
-
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v1
-
-    - name: install hugo
-      run: |
-        go get -u github.com/gohugoio/hugo
-
-    - name: setup public repo
-      run: |
-          git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public
-
-    - name: Build
-      run: |
-        export PATH=$PATH:`go env GOPATH`/bin
-        git submodule init
-        git submodule update
-        hugo
-
-    - name: Push
-      run: |
-        export MSG=`git log --format=%B -n 1 HEAD`
-        cd public
-        git config --local user.name &quot;NAME&quot;
-        git config --local user.email &quot;EMAIL@gmail.com&quot;
-        git add .
-        git commit -m &quot;${MSG}&quot;
-        git push origin master
-</code></pre>
-
-<p>Goをベースにしたワークフローを利用します。
-setup public repoのステージでHugoをビルドした結果の静的ファイルが吐き出されるディレクトリを公開用のリポジトリで管理できるようにします。<br />
-Buildステージで環境変数のPATHにGoのバイナリのある場所も追加してHugoコマンドが使えるようにします。<br />
-Pushステージで記事用のリポジトリのコミットメッセージを取得して公開用のリポジトリのコミットメッセージにします。<br />
-以上で設定が完了したので記事用のリポジトリのmasterにpushするとActionsが起動して公開用のリポジトリに送信されます。</p>
-
-<p>このブログもこのようにして公開されています。
-GitHub Actionsを利用するとCircle CIなどに別で登録したり確認しに行く作業がなくなります。
-GitHubだけで作業が完結できるのでかなり便利だなと感じました。</p>
-
-                    </div>
-                </section>
-                
             </div>
-            
-
             <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
         <ul>

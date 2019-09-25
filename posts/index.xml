@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Posts of knsh14</title>
@@ -6,10 +6,38 @@
     <description>Recent content in Posts on Posts of knsh14</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-ja</language>
-    <lastBuildDate>Sat, 14 Sep 2019 01:01:53 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Sep 2019 19:36:24 +0900</lastBuildDate>
     
 	<atom:link href="https://knsh14.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>技術書典7に参加してきました</title>
+      <link>https://knsh14.github.io/posts/techbookfest-7/</link>
+      <pubDate>Tue, 24 Sep 2019 19:36:24 +0900</pubDate>
+      
+      <guid>https://knsh14.github.io/posts/techbookfest-7/</guid>
+      <description>技術書典7に参加してきました。 私は今回&amp;rdquo;かまてん&amp;ldquo;というサークルでGoのテストについての本を頒布しました。
+他にも
+ golang.tokyo メルカリ技術書典部  に記事を寄稿しました。
+寄稿した記事の概要 かまてん かまてんは私かまたと@tenntennの二人のサークルです。
+今回はGoのテストについて使い方やテストのためのテクニック、テストしやすいコードを書くためにはどこを意識して書いたらよいのかを解説しています。
+ベースにしたのはGopherCon 2017でMitchell Hashimotoが発表した&amp;rdquo;Advanced Testing with Go&amp;rdquo;です。 彼の発表資料や動画をベースにそれぞれの項目を噛み砕いて説明し、理解が深まるようにいくつかの項目にはサンプルをつけました。 発表資料へのリンクは次の3つです。
+ https://speakerdeck.com/mitchellh/advanced-testing-with-go https://www.youtube.com/watch?v=8hQG7QlcLBk https://about.sourcegraph.com/go/advanced-testing-in-go  二人なので常にギリギリの戦いをしながら本を書いています。 今回も当日まで頑張って色々修正してなんとか頒布することができました。
+後日BOOTHにて当日頒布したものからもう少し追記したものを販売する予定です。 当日買いそびれた方はそちらで購入していただけます。
+golang.tokyo Goのコミュニティであるgolang.tokyoでは有志のメンバーが集って、それぞれが好きなトピックについて書きました。 自分はGopherCon 2019で観てよいと感じたGioというGoのGUIライブラリについて、サンプルを使いながら紹介しました。
+Gioについての資料は次の4つがあります。
+ https://git.sr.ht/~eliasnaur/gio https://godoc.org/gioui.org https://www.youtube.com/watch?v=9D6eWP4peYM https://go-talks.appspot.com/github.com/eliasnaur/gophercon-2019-talk/gophercon-2019.slide#1  GioはGitHubを使っていないため、コントリビュートする手順がメーリングリストでパッチを投げるという普段馴染みのない方法です。 そこで、私がコントリビュートした時の手順も紹介しています。
+golang.tokyoは今回表紙をtottieさんに依頼しました。 tottieさんはGoのスタンプを制作されたり、かわいいGopherの画像をtwitterにアップされてるデザイナーの方です。 今回作成して頂いた表紙がとても可愛かったので自分でもポスター欲しいなと思いました。 おかげさまで物理本は完全に捌き切ったので、表紙は大事ですね。
+メルカリ技術書典部 私が所属しているメルペイとメルカリのエンジニアで記事を書きました。
+私は先日のMERPAY TECH OPENNESS MONTHの際に投稿した&amp;ldquo;メルペイにおけるお客さま残高の管理手法&amp;rdquo;をブラッシュアップして寄稿しました。
+私が担当しているマイクロサービスがどのような設計になっているかについて解説しています。 お客様の残高を預かるサービスにおいて取引の整合性をどのように担保するかについて、工夫した点を解説しています。 内容的には変わっていませんが、読みづらい文章を修正したり画像を入れ替えたりしました。
+&amp;ldquo;ちょっと手直しするだけでいいから楽勝だよ！&amp;rdquo;と言われたのでほいほいついて行きましたが、結果的に半分くらいは書き直したり、詳しく説明し直した気がします。 そこから更に@mhidaka先生が神編集してくださって、よい文章に改造していただきました。
+反省 私は文章を書くのが苦手で、修正項目の8割ほどは文章の校正に費やされています。 textlintなどを使って機械的にレビューしていますが、細かい接続詞などでまだまだ大量に修正点が見つかります。
+参考資料として次のリンクを紹介してもらったので、次に見直せるように紹介します。
+ 技術的な文章を書くための第0歩 ～読者に伝わる書き方～ 技術的な文章を書くための1歩、2歩、3歩  他にも、次の書籍は文章作成の参考になると伺いました。
+ 理科系の作文技術 技術者のためのテクニカルライティング入門講座  どちらもKindleで読めます。気になった方はぜひ読んでみてください。</description>
+    </item>
     
     <item>
       <title>HugoのデプロイをGitHub Actionsで行う</title>
