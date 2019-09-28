@@ -71,6 +71,91 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">27 Sep 2019, 12:30</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://knsh14.github.io/posts/textlint-reviewdog/" class="post-title">reviewdogとGitHub Actionsでtextlintチェックをする</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>この記事では<a href="https://github.com/reviewdog/reviewdog">reviewdog</a>と<a href="https://github.com/textlint/textlint">textlint</a>を組み合わせてGitHub Actionsで利用する方法を説明します。</p>
+
+<h1 id="モチベーション">モチベーション</h1>
+
+<p>技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。</p>
+
+<p>私は文章力を向上させるためにこのブログを更新しています。
+そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。
+TechBoosterが公開している<a href="https://github.com/TechBooster/ReVIEW-Template">Re:VIEW Template</a>ではCircleCIを利用してPull Requestにコメントを付けています。
+しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。
+そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。</p>
+
+<p>口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。</p>
+
+<h1 id="textlintのインストール">textlintのインストール</h1>
+
+<p>初めにnpmをインストールします。
+私は<a href="https://github.com/hokaccha/nodebrew">nodebrew</a>を利用してインストールしました。</p>
+
+<p>次に<code>npm init</code>コマンドでモジュールを定義します。
+このコマンドを実行して質問に答えていくと<code>package.json</code>が作成されます。</p>
+
+<p><code>npm install</code>コマンドでtextlintとtextlintのためのプラグインなどをインストールします。</p>
+
+<pre><code>npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh
+</code></pre>
+
+<p><code>.textlintrc</code> や設定ファイルなどは<a href="https://github.com/TechBooster/ReVIEW-Template">ReVIEW-Template</a>から持ってきます。
+この設定ファイルを使うことで技術書典と同じレベルでチェックできます。</p>
+
+<h1 id="workflowの設定">workflowの設定</h1>
+
+<p>リポジトリのルートに <code>.github/workflow</code> ディレクトリを作成します。
+このディレクトリに <code>textlint.yaml</code> を作成し、次のワークフローを設定します。</p>
+
+<pre><code class="language-yaml">name: textlint
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: npm install
+      run: |
+        npm install
+    - name: install reviewdog
+      run: |
+          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13
+    - name: lint
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review
+</code></pre>
+
+<p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
+<code>npm install</code>を毎回キャッシュを使わずにインストールしていますが、現時点で実行時間が30秒程度なのであまり問題になっていません。</p>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">24 Sep 2019, 19:36</h1>
                 <section class="post">
                     <header class="post-header">

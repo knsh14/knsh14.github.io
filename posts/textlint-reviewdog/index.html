@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reviewdogとGitHub Actionsでtextlintチェックをする &middot; Posts of knsh14</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.59.0-DEV" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="reviewdogとGitHub Actionsでtextlintチェックをする &middot; Posts of knsh14">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="reviewdogとGitHub Actionsでtextlintチェックをする &middot; Posts of knsh14">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href='https://knsh14.github.io/css/all.min.css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Posts of knsh14" href='https://knsh14.github.io/index.xml' />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://knsh14.github.io/">Posts of knsh14</a></h1>
+            <h2 class="brand-tagline"> blog for kenshi kamata </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/knsh14">
+                        <i class="fa fa-twitter"></i> Twitter
+                    </a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/knsh14">
+                        <i class="fa fa-github-alt"></i> Github
+                    </a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href='https://knsh14.github.io/index.xml'>
+                        <i class="fa fa-rss"></i> rss
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">27 Sep 2019, 12:30</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://knsh14.github.io/posts/textlint-reviewdog/" class="post-title">reviewdogとGitHub Actionsでtextlintチェックをする</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        
+
+<p>この記事では<a href="https://github.com/reviewdog/reviewdog">reviewdog</a>と<a href="https://github.com/textlint/textlint">textlint</a>を組み合わせてGitHub Actionsで利用する方法を説明します。</p>
+
+<h1 id="モチベーション">モチベーション</h1>
+
+<p>技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。</p>
+
+<p>私は文章力を向上させるためにこのブログを更新しています。
+そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。
+TechBoosterが公開している<a href="https://github.com/TechBooster/ReVIEW-Template">Re:VIEW Template</a>ではCircleCIを利用してPull Requestにコメントを付けています。
+しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。
+そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。</p>
+
+<p>口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。</p>
+
+<h1 id="textlintのインストール">textlintのインストール</h1>
+
+<p>初めにnpmをインストールします。
+私は<a href="https://github.com/hokaccha/nodebrew">nodebrew</a>を利用してインストールしました。</p>
+
+<p>次に<code>npm init</code>コマンドでモジュールを定義します。
+このコマンドを実行して質問に答えていくと<code>package.json</code>が作成されます。</p>
+
+<p><code>npm install</code>コマンドでtextlintとtextlintのためのプラグインなどをインストールします。</p>
+
+<pre><code>npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh
+</code></pre>
+
+<p><code>.textlintrc</code> や設定ファイルなどは<a href="https://github.com/TechBooster/ReVIEW-Template">ReVIEW-Template</a>から持ってきます。
+この設定ファイルを使うことで技術書典と同じレベルでチェックできます。</p>
+
+<h1 id="workflowの設定">workflowの設定</h1>
+
+<p>リポジトリのルートに <code>.github/workflow</code> ディレクトリを作成します。
+このディレクトリに <code>textlint.yaml</code> を作成し、次のワークフローを設定します。</p>
+
+<pre><code class="language-yaml">name: textlint
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: npm install
+      run: |
+        npm install
+    - name: install reviewdog
+      run: |
+          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13
+    - name: lint
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review
+</code></pre>
+
+<p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
+<code>npm install</code>を毎回キャッシュを使わずにインストールしていますが、現時点で実行時間が30秒程度なのであまり問題になっていません。</p>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src='https://knsh14.github.io/js/all.min.js'></script>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
