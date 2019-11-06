@@ -6,10 +6,30 @@
     <description>Recent content on Posts of knsh14</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-ja</language>
-    <lastBuildDate>Fri, 27 Sep 2019 12:30:29 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 06 Nov 2019 01:12:03 +0900</lastBuildDate>
     
 	<atom:link href="https://knsh14.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました</title>
+      <link>https://knsh14.github.io/posts/talk-about-guide-in-golang-tokyo-27/</link>
+      <pubDate>Wed, 06 Nov 2019 01:12:03 +0900</pubDate>
+      
+      <guid>https://knsh14.github.io/posts/talk-about-guide-in-golang-tokyo-27/</guid>
+      <description>11月5日に行われたgolang.tokyo#27で「uber-go/guide の解説」というタイトルで発表しました。
+資料はこちらです。
+内容 uber-go/guideというUberがまとめたコードレビューに関するドキュメントがあります。
+これを自分が日本語に翻訳しました。 このguideから自分の翻訳へのリンクも張ってもらっています。
+このドキュメントを翻訳した際、どのように翻訳したのかやそもそもなぜ翻訳をやろうと思ったのかなどを説明しました。
+そして、自分が読んでいて特にこれは参考になったなと思ったセクションの一部を取り上げて解説しました。
+最後に自分が最近取り組んでいるuber-go/guideのセクションをチェックしてくれるulinterというlinterについても話しました。
+発表した感想 良かったこと Twitter上では期待してくれる方がいて、良かったというツイートもいただけました。 かなりよいフィードバックがあったので素直にうれしかったです。
+自分は技術的文章を翻訳する際の期間や方法の話はこれまであまり聞いたことがなかったです。 また、自分も発表したことがなかったため、かなり新鮮でした。 この話を聞いてくれた方はどう感じたのか気になります。
+失敗したなと思ったこと ulinterの話をする際に、コードを紹介しながら実装の説明をしました。 AssignStmtやTypeAssertExprなど、GoのASTの話を具体的に話ました。 しかし、会場の方はGoの静的解析について事前知識があまりなさそうな雰囲気を感じました。 いきなりこれらの話を出すのは聞いてくださった方々を置いていってしまったと反省しています。
+発表時間が少し予定時間を超えたのでこれも収まるように配分練習等すべきでした。
+終わりに 前回外部発表したときから1ヵ月以上期間が空いたので緊張しましたがなんとか発表できてよかったです。 聞いてくれた方はこれを機会に英語で書かれたドキュメントも恐れずに読んで見てほしいです。</description>
+    </item>
     
     <item>
       <title>reviewdogとGitHub Actionsでtextlintチェックをする</title>

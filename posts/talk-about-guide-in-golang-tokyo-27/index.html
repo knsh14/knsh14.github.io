@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました &middot; Posts of knsh14</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.60.0-DEV" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました &middot; Posts of knsh14">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました &middot; Posts of knsh14">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href='https://knsh14.github.io/css/all.min.css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Posts of knsh14" href='https://knsh14.github.io/index.xml' />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://knsh14.github.io/">Posts of knsh14</a></h1>
+            <h2 class="brand-tagline"> blog for kenshi kamata </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/knsh14">
+                        <i class="fa fa-twitter"></i> Twitter
+                    </a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/knsh14">
+                        <i class="fa fa-github-alt"></i> Github
+                    </a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href='https://knsh14.github.io/index.xml'>
+                        <i class="fa fa-rss"></i> rss
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">06 Nov 2019, 01:12</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://knsh14.github.io/posts/talk-about-guide-in-golang-tokyo-27/" class="post-title">golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        
+
+<p>11月5日に行われた<a href="https://techplay.jp/event/753881">golang.tokyo#27</a>で「uber-go/guide の解説」というタイトルで発表しました。<br />
+資料は<a href="https://docs.google.com/presentation/d/10H6tvkVG2Qb9DNeSITAiKP-5BJKHqwnWFRCxEQYbpYQ/edit#slide=id.p">こちら</a>です。</p>
+
+<h1 id="内容">内容</h1>
+
+<p><a href="https://github.com/uber-go/guide/">uber-go/guide</a>というUberがまとめたコードレビューに関するドキュメントがあります。<br />
+これを自分が日本語に翻訳しました。
+このguideから自分の翻訳へのリンクも張ってもらっています。</p>
+
+<p>このドキュメントを翻訳した際、どのように翻訳したのかやそもそもなぜ翻訳をやろうと思ったのかなどを説明しました。<br />
+そして、自分が読んでいて特にこれは参考になったなと思ったセクションの一部を取り上げて解説しました。<br />
+最後に自分が最近取り組んでいるuber-go/guideのセクションをチェックしてくれるulinterというlinterについても話しました。</p>
+
+<h1 id="発表した感想">発表した感想</h1>
+
+<h2 id="良かったこと">良かったこと</h2>
+
+<p>Twitter上では期待してくれる方がいて、良かったというツイートもいただけました。
+かなりよいフィードバックがあったので素直にうれしかったです。<br />
+自分は技術的文章を翻訳する際の期間や方法の話はこれまであまり聞いたことがなかったです。
+また、自分も発表したことがなかったため、かなり新鮮でした。
+この話を聞いてくれた方はどう感じたのか気になります。</p>
+
+<h2 id="失敗したなと思ったこと">失敗したなと思ったこと</h2>
+
+<p>ulinterの話をする際に、コードを紹介しながら実装の説明をしました。
+AssignStmtやTypeAssertExprなど、GoのASTの話を具体的に話ました。
+しかし、会場の方はGoの静的解析について事前知識があまりなさそうな雰囲気を感じました。
+いきなりこれらの話を出すのは聞いてくださった方々を置いていってしまったと反省しています。</p>
+
+<p>発表時間が少し予定時間を超えたのでこれも収まるように配分練習等すべきでした。</p>
+
+<h1 id="終わりに">終わりに</h1>
+
+<p>前回外部発表したときから1ヵ月以上期間が空いたので緊張しましたがなんとか発表できてよかったです。
+聞いてくれた方はこれを機会に英語で書かれたドキュメントも恐れずに読んで見てほしいです。</p>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src='https://knsh14.github.io/js/all.min.js'></script>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-149357345-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
