@@ -1,185 +1,186 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ja-ja">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reviewdogとGitHub Actionsでtextlintチェックをする &middot; Posts of knsh14</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="reviewdogとGitHub Actionsでtextlintチェックをする">
+<meta itemprop="description" content="この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。
+モチベーション 技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。
+私は文章力を向上させるためにこのブログを更新しています。 そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。 TechBoosterが公開しているRe:VIEW TemplateではCircleCIを利用してPull Requestにコメントを付けています。 しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。 そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。
+口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。
+textlintのインストール 初めにnpmをインストールします。 私はnodebrewを利用してインストールしました。
+次にnpm initコマンドでモジュールを定義します。 このコマンドを実行して質問に答えていくとpackage.jsonが作成されます。
+npm installコマンドでtextlintとtextlintのためのプラグインなどをインストールします。
+npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh .textlintrc や設定ファイルなどはReVIEW-Templateから持ってきます。 この設定ファイルを使うことで技術書典と同じレベルでチェックできます。
+workflowの設定 リポジトリのルートに .github/workflow ディレクトリを作成します。 このディレクトリに textlint.yaml を作成し、次のワークフローを設定します。
+name: textlint on: pull_request: branches: - master jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 - name: Use Node.js uses: actions/setup-node@v1 with: node-version: 12.x - name: npm install run: | npm install - name: install reviewdog run: | curl -sfL https://raw.">
+<meta itemprop="datePublished" content="2019-09-27T12:30:29&#43;09:00" />
+<meta itemprop="dateModified" content="2019-09-27T12:30:29&#43;09:00" />
+<meta itemprop="wordCount" content="110">
 
-    <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.60.0-DEV" />
-    <meta name="twitter:card" content="summary">
-    
-    <meta name="twitter:title" content="reviewdogとGitHub Actionsでtextlintチェックをする &middot; Posts of knsh14">
-    <meta name="twitter:description" content="">
 
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="reviewdogとGitHub Actionsでtextlintチェックをする &middot; Posts of knsh14">
-    <meta property="og:description" content="">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="reviewdogとGitHub Actionsでtextlintチェックをする" />
+<meta property="og:description" content="この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。
+モチベーション 技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。
+私は文章力を向上させるためにこのブログを更新しています。 そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。 TechBoosterが公開しているRe:VIEW TemplateではCircleCIを利用してPull Requestにコメントを付けています。 しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。 そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。
+口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。
+textlintのインストール 初めにnpmをインストールします。 私はnodebrewを利用してインストールしました。
+次にnpm initコマンドでモジュールを定義します。 このコマンドを実行して質問に答えていくとpackage.jsonが作成されます。
+npm installコマンドでtextlintとtextlintのためのプラグインなどをインストールします。
+npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh .textlintrc や設定ファイルなどはReVIEW-Templateから持ってきます。 この設定ファイルを使うことで技術書典と同じレベルでチェックできます。
+workflowの設定 リポジトリのルートに .github/workflow ディレクトリを作成します。 このディレクトリに textlint.yaml を作成し、次のワークフローを設定します。
+name: textlint on: pull_request: branches: - master jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 - name: Use Node.js uses: actions/setup-node@v1 with: node-version: 12.x - name: npm install run: | npm install - name: install reviewdog run: | curl -sfL https://raw." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://knsh14.github.io/posts/textlint-reviewdog/" />
+<meta property="article:published_time" content="2019-09-27T12:30:29+09:00" />
+<meta property="article:modified_time" content="2019-09-27T12:30:29+09:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="reviewdogとGitHub Actionsでtextlintチェックをする"/>
+<meta name="twitter:description" content="この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。
+モチベーション 技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。
+私は文章力を向上させるためにこのブログを更新しています。 そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。 TechBoosterが公開しているRe:VIEW TemplateではCircleCIを利用してPull Requestにコメントを付けています。 しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。 そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。
+口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。
+textlintのインストール 初めにnpmをインストールします。 私はnodebrewを利用してインストールしました。
+次にnpm initコマンドでモジュールを定義します。 このコマンドを実行して質問に答えていくとpackage.jsonが作成されます。
+npm installコマンドでtextlintとtextlintのためのプラグインなどをインストールします。
+npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh .textlintrc や設定ファイルなどはReVIEW-Templateから持ってきます。 この設定ファイルを使うことで技術書典と同じレベルでチェックできます。
+workflowの設定 リポジトリのルートに .github/workflow ディレクトリを作成します。 このディレクトリに textlint.yaml を作成し、次のワークフローを設定します。
+name: textlint on: pull_request: branches: - master jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 - name: Use Node.js uses: actions/setup-node@v1 with: node-version: 12.x - name: npm install run: | npm install - name: install reviewdog run: | curl -sfL https://raw."/>
 
-    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href='https://knsh14.github.io/css/all.min.css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <link rel="alternate" type="application/rss+xml" title="Posts of knsh14" href='https://knsh14.github.io/index.xml' />
+	<title>reviewdogとGitHub Actionsでtextlintチェックをする</title>
+	<link rel="stylesheet" href="https://knsh14.github.io/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
+	
 </head>
-<body>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://knsh14.github.io/">knsh14</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://knsh14.github.io/posts/">Posts</a>
+				<a href="https://knsh14.github.io/translations/">Translations</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/knsh14" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/knsh14" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://knsh14.github.io/posts/">Posts</a></li>
+			<li><a href="https://knsh14.github.io/translations/">Translations</a></li>
+		</ul>
+	</div>
 
 
-<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-    <div class="header">
-        <hgroup>
-            <h1 class="brand-title"><a href="https://knsh14.github.io/">Posts of knsh14</a></h1>
-            <h2 class="brand-tagline"> blog for kenshi kamata </h2>
-        </hgroup>
-
-        <nav class="nav">
-            <ul class="nav-list">
-                
-                <li class="nav-item">
-                    <a class="pure-button" href="https://twitter.com/knsh14">
-                        <i class="fa fa-twitter"></i> Twitter
-                    </a>
-                </li>
-                
-                
-                <li class="nav-item">
-                    <a class="pure-button" href="https://github.com/knsh14">
-                        <i class="fa fa-github-alt"></i> Github
-                    </a>
-                </li>
-                
-                
-                
-                <li class="nav-item">
-                    <a class="pure-button" href='https://knsh14.github.io/index.xml'>
-                        <i class="fa fa-rss"></i> rss
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
-
-
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
-            
-            <div class="posts">
-                <h1 class="content-subhead">27 Sep 2019, 12:30</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://knsh14.github.io/posts/textlint-reviewdog/" class="post-title">reviewdogとGitHub Actionsでtextlintチェックをする</a>
-
-                        <p class="post-meta">
-                            
-                            
-                        </p>
-                    </header>
-                    
-                    <div class="post-description">
-                        
-
-<p>この記事では<a href="https://github.com/reviewdog/reviewdog">reviewdog</a>と<a href="https://github.com/textlint/textlint">textlint</a>を組み合わせてGitHub Actionsで利用する方法を説明します。</p>
-
-<h1 id="モチベーション">モチベーション</h1>
-
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Sep 27, 2019</span></div>
+				<h1>reviewdogとGitHub Actionsでtextlintチェックをする</h1>
+			</header>
+			<div class="content">
+				<p>この記事では<a href="https://github.com/reviewdog/reviewdog">reviewdog</a>と<a href="https://github.com/textlint/textlint">textlint</a>を組み合わせてGitHub Actionsで利用する方法を説明します。</p>
+<h1 id="モチベーション">モチベーション<a href="#モチベーション" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <p>技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。</p>
-
 <p>私は文章力を向上させるためにこのブログを更新しています。
 そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。
 TechBoosterが公開している<a href="https://github.com/TechBooster/ReVIEW-Template">Re:VIEW Template</a>ではCircleCIを利用してPull Requestにコメントを付けています。
 しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。
 そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。</p>
-
 <p>口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。</p>
-
-<h1 id="textlintのインストール">textlintのインストール</h1>
-
+<h1 id="textlintのインストール">textlintのインストール<a href="#textlintのインストール" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <p>初めにnpmをインストールします。
 私は<a href="https://github.com/hokaccha/nodebrew">nodebrew</a>を利用してインストールしました。</p>
-
 <p>次に<code>npm init</code>コマンドでモジュールを定義します。
 このコマンドを実行して質問に答えていくと<code>package.json</code>が作成されます。</p>
-
 <p><code>npm install</code>コマンドでtextlintとtextlintのためのプラグインなどをインストールします。</p>
-
 <pre><code>npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh
-</code></pre>
-
-<p><code>.textlintrc</code> や設定ファイルなどは<a href="https://github.com/TechBooster/ReVIEW-Template">ReVIEW-Template</a>から持ってきます。
+</code></pre><p><code>.textlintrc</code> や設定ファイルなどは<a href="https://github.com/TechBooster/ReVIEW-Template">ReVIEW-Template</a>から持ってきます。
 この設定ファイルを使うことで技術書典と同じレベルでチェックできます。</p>
-
-<h1 id="workflowの設定">workflowの設定</h1>
-
+<h1 id="workflowの設定">workflowの設定<a href="#workflowの設定" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <p>リポジトリのルートに <code>.github/workflow</code> ディレクトリを作成します。
 このディレクトリに <code>textlint.yaml</code> を作成し、次のワークフローを設定します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: textlint
 
-<pre><code class="language-yaml">name: textlint
-
-on:
-  pull_request:
-    branches:
+<span style="color:#66d9ef">on</span>:
+  <span style="color:#66d9ef">pull_request</span>:
+    <span style="color:#66d9ef">branches</span>:
     - master
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-    - name: npm install
-      run: |
-        npm install
-    - name: install reviewdog
-      run: |
-          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13
-    - name: lint
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review
-</code></pre>
-
-<p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
+<span style="color:#66d9ef">jobs</span>:
+  <span style="color:#66d9ef">build</span>:
+    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
+    <span style="color:#66d9ef">steps</span>:
+    - <span style="color:#66d9ef">uses</span>: actions/checkout@v1
+    - <span style="color:#66d9ef">name</span>: Use Node.js
+      <span style="color:#66d9ef">uses</span>: actions/setup-node@v1
+      <span style="color:#66d9ef">with</span>:
+        <span style="color:#66d9ef">node-version</span>: <span style="color:#ae81ff">12.</span>x
+    - <span style="color:#66d9ef">name</span>: npm install
+      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        npm install</span>
+    - <span style="color:#66d9ef">name</span>: install reviewdog
+      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13</span>
+    - <span style="color:#66d9ef">name</span>: lint
+      <span style="color:#66d9ef">env</span>:
+        <span style="color:#66d9ef">REVIEWDOG_GITHUB_API_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
+      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review</span>
+</code></pre></div><p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
 <code>npm install</code>を毎回キャッシュを使わずにインストールしていますが、現時点で実行時間が30秒程度なのであまり問題になっていません。</p>
 
-                    </div>
-                    
-                </section>
-            </div>
-            <div class="footer">
-    <div class="pure-menu pure-menu-horizontal pure-menu-open">
-        <ul>
-            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
-        </ul>
-    </div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>110 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-09-27 03:30 &#43;0000</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://knsh14.github.io/posts/talk-about-guide-in-golang-tokyo-27/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました</span>
+			</a>
+			<a class="prev-post" href="https://knsh14.github.io/posts/techbookfest-7/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>技術書典7に参加してきました</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
 </div>
-<script src='https://knsh14.github.io/js/all.min.js'></script>
+	</main>
 
-        </div>
-    </div>
-</div>
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://knsh14.github.io/">Kenshi Kamata</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://knsh14.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-149357345-1', 'auto');
-ga('send', 'pageview');
-
-</script>
+	<script src="https://knsh14.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
 
 </body>
+
 </html>

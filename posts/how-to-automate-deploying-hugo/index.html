@@ -1,207 +1,216 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ja-ja">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HugoのデプロイをGitHub Actionsで行う &middot; Posts of knsh14</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="HugoのデプロイをGitHub Actionsで行う">
+<meta itemprop="description" content="HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。
+自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。
+せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。
+なので、GitHub Actionsを使って作ってみることにしました。
+事前準備  記事を書く用のリポジトリ デプロイ先のリポジトリ GitHubのPersonal Access Token  repoの操作が可能な権限を付ける必要があります    記事を書く用のリポジトリはPrivateでも構いません。
+デプロイ先のリポジトリはUSERNAME.github.ioという名前にする必要があります
+記事のリポジトリにトークンを設定する 記事を書く用のリポジトリに事前準備で作成したPersonal Access Tokenを設定します。
+リポジトリのSettings -&gt; Secretsを開き、「Add a new secret」を押して、Nameを「MY_GITHUB_ACCESS_TOKEN」Valueに先程のトークンを設定します。 この設定を入れないと、別のリポジトリにアクセスする権限を持てないので必ず設定する必要があります。
+詳しいドキュメントは本家のドキュメントを参照してください。
+記事のリポジトリにworkflowを設定する 記事のリポジトリのルートに移動して、.github/workflowsディレクトリを作成します。
+その中に次のようなワークフローを定義します。
+name: Go on: push: branches: - master jobs: build: name: Build runs-on: ubuntu-latest steps: - name: Set up Go 1.12 uses: actions/setup-go@v1 with: go-version: 1.12 id: go - name: Check out code into the Go module directory uses: actions/checkout@v1 - name: install hugo run: | go get -u github.">
+<meta itemprop="datePublished" content="2019-09-14T01:01:53&#43;09:00" />
+<meta itemprop="dateModified" content="2019-09-14T01:01:53&#43;09:00" />
+<meta itemprop="wordCount" content="157">
 
-    <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.60.0-DEV" />
-    <meta name="twitter:card" content="summary">
-    
-    <meta name="twitter:title" content="HugoのデプロイをGitHub Actionsで行う &middot; Posts of knsh14">
-    <meta name="twitter:description" content="">
 
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="HugoのデプロイをGitHub Actionsで行う &middot; Posts of knsh14">
-    <meta property="og:description" content="">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="HugoのデプロイをGitHub Actionsで行う" />
+<meta property="og:description" content="HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。
+自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。
+せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。
+なので、GitHub Actionsを使って作ってみることにしました。
+事前準備  記事を書く用のリポジトリ デプロイ先のリポジトリ GitHubのPersonal Access Token  repoの操作が可能な権限を付ける必要があります    記事を書く用のリポジトリはPrivateでも構いません。
+デプロイ先のリポジトリはUSERNAME.github.ioという名前にする必要があります
+記事のリポジトリにトークンを設定する 記事を書く用のリポジトリに事前準備で作成したPersonal Access Tokenを設定します。
+リポジトリのSettings -&gt; Secretsを開き、「Add a new secret」を押して、Nameを「MY_GITHUB_ACCESS_TOKEN」Valueに先程のトークンを設定します。 この設定を入れないと、別のリポジトリにアクセスする権限を持てないので必ず設定する必要があります。
+詳しいドキュメントは本家のドキュメントを参照してください。
+記事のリポジトリにworkflowを設定する 記事のリポジトリのルートに移動して、.github/workflowsディレクトリを作成します。
+その中に次のようなワークフローを定義します。
+name: Go on: push: branches: - master jobs: build: name: Build runs-on: ubuntu-latest steps: - name: Set up Go 1.12 uses: actions/setup-go@v1 with: go-version: 1.12 id: go - name: Check out code into the Go module directory uses: actions/checkout@v1 - name: install hugo run: | go get -u github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://knsh14.github.io/posts/how-to-automate-deploying-hugo/" />
+<meta property="article:published_time" content="2019-09-14T01:01:53+09:00" />
+<meta property="article:modified_time" content="2019-09-14T01:01:53+09:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HugoのデプロイをGitHub Actionsで行う"/>
+<meta name="twitter:description" content="HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。
+自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。
+せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。
+なので、GitHub Actionsを使って作ってみることにしました。
+事前準備  記事を書く用のリポジトリ デプロイ先のリポジトリ GitHubのPersonal Access Token  repoの操作が可能な権限を付ける必要があります    記事を書く用のリポジトリはPrivateでも構いません。
+デプロイ先のリポジトリはUSERNAME.github.ioという名前にする必要があります
+記事のリポジトリにトークンを設定する 記事を書く用のリポジトリに事前準備で作成したPersonal Access Tokenを設定します。
+リポジトリのSettings -&gt; Secretsを開き、「Add a new secret」を押して、Nameを「MY_GITHUB_ACCESS_TOKEN」Valueに先程のトークンを設定します。 この設定を入れないと、別のリポジトリにアクセスする権限を持てないので必ず設定する必要があります。
+詳しいドキュメントは本家のドキュメントを参照してください。
+記事のリポジトリにworkflowを設定する 記事のリポジトリのルートに移動して、.github/workflowsディレクトリを作成します。
+その中に次のようなワークフローを定義します。
+name: Go on: push: branches: - master jobs: build: name: Build runs-on: ubuntu-latest steps: - name: Set up Go 1.12 uses: actions/setup-go@v1 with: go-version: 1.12 id: go - name: Check out code into the Go module directory uses: actions/checkout@v1 - name: install hugo run: | go get -u github."/>
 
-    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href='https://knsh14.github.io/css/all.min.css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <link rel="alternate" type="application/rss+xml" title="Posts of knsh14" href='https://knsh14.github.io/index.xml' />
+	<title>HugoのデプロイをGitHub Actionsで行う</title>
+	<link rel="stylesheet" href="https://knsh14.github.io/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
+	
 </head>
-<body>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://knsh14.github.io/">knsh14</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://knsh14.github.io/posts/">Posts</a>
+				<a href="https://knsh14.github.io/translations/">Translations</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/knsh14" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/knsh14" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://knsh14.github.io/posts/">Posts</a></li>
+			<li><a href="https://knsh14.github.io/translations/">Translations</a></li>
+		</ul>
+	</div>
 
 
-<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-    <div class="header">
-        <hgroup>
-            <h1 class="brand-title"><a href="https://knsh14.github.io/">Posts of knsh14</a></h1>
-            <h2 class="brand-tagline"> blog for kenshi kamata </h2>
-        </hgroup>
-
-        <nav class="nav">
-            <ul class="nav-list">
-                
-                <li class="nav-item">
-                    <a class="pure-button" href="https://twitter.com/knsh14">
-                        <i class="fa fa-twitter"></i> Twitter
-                    </a>
-                </li>
-                
-                
-                <li class="nav-item">
-                    <a class="pure-button" href="https://github.com/knsh14">
-                        <i class="fa fa-github-alt"></i> Github
-                    </a>
-                </li>
-                
-                
-                
-                <li class="nav-item">
-                    <a class="pure-button" href='https://knsh14.github.io/index.xml'>
-                        <i class="fa fa-rss"></i> rss
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
-
-
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
-            
-            <div class="posts">
-                <h1 class="content-subhead">14 Sep 2019, 01:01</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://knsh14.github.io/posts/how-to-automate-deploying-hugo/" class="post-title">HugoのデプロイをGitHub Actionsで行う</a>
-
-                        <p class="post-meta">
-                            
-                            
-                        </p>
-                    </header>
-                    
-                    <div class="post-description">
-                        
-
-<p>HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。<br />
-自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。<br />
-せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。<br />
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Sep 14, 2019</span></div>
+				<h1>HugoのデプロイをGitHub Actionsで行う</h1>
+			</header>
+			<div class="content">
+				<p>HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。<br>
+自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。<br>
+せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。<br>
 なので、GitHub Actionsを使って作ってみることにしました。</p>
-
-<h1 id="事前準備">事前準備</h1>
-
+<h1 id="事前準備">事前準備<a href="#事前準備" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <ul>
 <li>記事を書く用のリポジトリ</li>
 <li>デプロイ先のリポジトリ</li>
 <li>GitHubのPersonal Access Token
-
 <ul>
 <li>repoの操作が可能な権限を付ける必要があります</li>
-</ul></li>
 </ul>
-
-<p>記事を書く用のリポジトリはPrivateでも構いません。<br />
+</li>
+</ul>
+<p>記事を書く用のリポジトリはPrivateでも構いません。<br>
 デプロイ先のリポジトリは<code>USERNAME.github.io</code>という名前にする必要があります</p>
-
-<h1 id="記事のリポジトリにトークンを設定する">記事のリポジトリにトークンを設定する</h1>
-
-<p>記事を書く用のリポジトリに事前準備で作成したPersonal Access Tokenを設定します。<br />
+<h1 id="記事のリポジトリにトークンを設定する">記事のリポジトリにトークンを設定する<a href="#記事のリポジトリにトークンを設定する" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>記事を書く用のリポジトリに事前準備で作成したPersonal Access Tokenを設定します。<br>
 リポジトリのSettings -&gt; Secretsを開き、「Add a new secret」を押して、Nameを「MY_GITHUB_ACCESS_TOKEN」Valueに先程のトークンを設定します。
-この設定を入れないと、別のリポジトリにアクセスする権限を持てないので必ず設定する必要があります。<br />
+この設定を入れないと、別のリポジトリにアクセスする権限を持てないので必ず設定する必要があります。<br>
 詳しいドキュメントは<a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables">本家のドキュメント</a>を参照してください。</p>
-
-<h1 id="記事のリポジトリにworkflowを設定する">記事のリポジトリにworkflowを設定する</h1>
-
-<p>記事のリポジトリのルートに移動して、<code>.github/workflows</code>ディレクトリを作成します。<br />
+<h1 id="記事のリポジトリにworkflowを設定する">記事のリポジトリにworkflowを設定する<a href="#記事のリポジトリにworkflowを設定する" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>記事のリポジトリのルートに移動して、<code>.github/workflows</code>ディレクトリを作成します。<br>
 その中に次のようなワークフローを定義します。</p>
-
-<pre><code class="language-yaml">name: Go
-on:
-  push:
-    branches:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: Go
+<span style="color:#66d9ef">on</span>:
+  <span style="color:#66d9ef">push</span>:
+    <span style="color:#66d9ef">branches</span>:
     - master
-jobs:
+<span style="color:#66d9ef">jobs</span>:
 
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
+  <span style="color:#66d9ef">build</span>:
+    <span style="color:#66d9ef">name</span>: Build
+    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
+    <span style="color:#66d9ef">steps</span>:
 
-    - name: Set up Go 1.12
-      uses: actions/setup-go@v1
-      with:
-        go-version: 1.12
-      id: go
+    - <span style="color:#66d9ef">name</span>: Set up Go <span style="color:#ae81ff">1.12</span>
+      <span style="color:#66d9ef">uses</span>: actions/setup-go@v1
+      <span style="color:#66d9ef">with</span>:
+        <span style="color:#66d9ef">go-version</span>: <span style="color:#ae81ff">1.12</span>
+      <span style="color:#66d9ef">id</span>: go
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v1
+    - <span style="color:#66d9ef">name</span>: Check out code into the Go module directory
+      <span style="color:#66d9ef">uses</span>: actions/checkout@v1
 
-    - name: install hugo
-      run: |
-        go get -u github.com/gohugoio/hugo
+    - <span style="color:#66d9ef">name</span>: install hugo
+      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        go get -u github.com/gohugoio/hugo</span>
 
-    - name: setup public repo
-      run: |
-          git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public
+    - <span style="color:#66d9ef">name</span>: setup public repo
+      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">          git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public</span>
 
-    - name: Build
-      run: |
-        export PATH=$PATH:`go env GOPATH`/bin
+    - <span style="color:#66d9ef">name</span>: Build
+      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        export PATH=$PATH:`go env GOPATH`/bin</span>
         git submodule init
         git submodule update
         hugo
 
-    - name: Push
-      run: |
-        export MSG=`git log --format=%B -n 1 HEAD`
+    - <span style="color:#66d9ef">name</span>: Push
+      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        export MSG=`git log --format=%B -n 1 HEAD`</span>
         cd public
-        git config --local user.name &quot;NAME&quot;
-        git config --local user.email &quot;EMAIL@gmail.com&quot;
+        git config --local user.name <span style="color:#e6db74">&#34;NAME&#34;</span>
+        git config --local user.email <span style="color:#e6db74">&#34;EMAIL@gmail.com&#34;</span>
         git add .
-        git commit -m &quot;${MSG}&quot;
+        git commit -m <span style="color:#e6db74">&#34;${MSG}&#34;</span>
         git push origin master
-</code></pre>
-
-<p>Goをベースにしたワークフローを利用します。
-setup public repoのステージでHugoをビルドした結果の静的ファイルが吐き出されるディレクトリを公開用のリポジトリで管理できるようにします。<br />
-Buildステージで環境変数のPATHにGoのバイナリのある場所も追加してHugoコマンドが使えるようにします。<br />
-Pushステージで記事用のリポジトリのコミットメッセージを取得して公開用のリポジトリのコミットメッセージにします。<br />
+</code></pre></div><p>Goをベースにしたワークフローを利用します。
+setup public repoのステージでHugoをビルドした結果の静的ファイルが吐き出されるディレクトリを公開用のリポジトリで管理できるようにします。<br>
+Buildステージで環境変数のPATHにGoのバイナリのある場所も追加してHugoコマンドが使えるようにします。<br>
+Pushステージで記事用のリポジトリのコミットメッセージを取得して公開用のリポジトリのコミットメッセージにします。<br>
 以上で設定が完了したので記事用のリポジトリのmasterにpushするとActionsが起動して公開用のリポジトリに送信されます。</p>
-
 <p>このブログもこのようにして公開されています。
 GitHub Actionsを利用するとCircle CIなどに別で登録したり確認しに行く作業がなくなります。
 GitHubだけで作業が完結できるのでかなり便利だなと感じました。</p>
 
-                    </div>
-                    
-                </section>
-            </div>
-            <div class="footer">
-    <div class="pure-menu pure-menu-horizontal pure-menu-open">
-        <ul>
-            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
-        </ul>
-    </div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>157 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-09-13 16:01 &#43;0000</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://knsh14.github.io/posts/techbookfest-7/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>技術書典7に参加してきました</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
 </div>
-<script src='https://knsh14.github.io/js/all.min.js'></script>
+	</main>
 
-        </div>
-    </div>
-</div>
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://knsh14.github.io/">Kenshi Kamata</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://knsh14.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-149357345-1', 'auto');
-ga('send', 'pageview');
-
-</script>
+	<script src="https://knsh14.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
 
 </body>
+
 </html>
