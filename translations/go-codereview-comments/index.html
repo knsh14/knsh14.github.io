@@ -12,10 +12,12 @@
 go fmt あなたのコードに gofmt を走らせると、自動的に機械的に直すことのできるスタイルの大部分を修正してくれます。 世にあるGoのコードのほとんどすべてが gofmt を使っています。 この文章の残りは機械的に直すことのできないポイントについて解説します。
 代わりに goimports を使う手段もあります。 gofmt に加えて必要に応じてimport内に空行をつけたり消したりする機能があります。
 Comment Sentences http://golang.org/doc/effective_go.html#commentary を読みましょう。 func や struct などのドキュメントのためのコメントは多少冗長であっても完全な文章でなくてはいけません。 このアプローチは godoc ドキュメントにするときにより効果を発揮します。 コメントは以下の例のように対象の名前で始まって、ピリオドで終わらなければいけません。
-// Request represents a request to run a command. type Request struct { ... // Encode writes the JSON encoding of req to w. func Encode(w io.Writer, req *Request) { ... ">
+// Request represents a request to run a command. type Request struct { ... // Encode writes the JSON encoding of req to w. func Encode(w io.Writer, req *Request) { ... また、コメントが正しい文章の終わりの印であるピリオドで終わらない場合に注意してください。 github.com/mailru/easyjson や github.com/golang/lint など多くのツールで型やメソッドの情報をマークするためにコメントを使っています。
+Declaring Empty Slices スライスの宣言の時は
+var t []string のほうが">
 <meta itemprop="datePublished" content="2020-03-29T18:23:14&#43;09:00" />
 <meta itemprop="dateModified" content="2020-03-29T18:23:14&#43;09:00" />
-<meta itemprop="wordCount" content="58">
+<meta itemprop="wordCount" content="1078">
 
 
 
@@ -24,7 +26,9 @@ Comment Sentences http://golang.org/doc/effective_go.html#commentary を読み�
 go fmt あなたのコードに gofmt を走らせると、自動的に機械的に直すことのできるスタイルの大部分を修正してくれます。 世にあるGoのコードのほとんどすべてが gofmt を使っています。 この文章の残りは機械的に直すことのできないポイントについて解説します。
 代わりに goimports を使う手段もあります。 gofmt に加えて必要に応じてimport内に空行をつけたり消したりする機能があります。
 Comment Sentences http://golang.org/doc/effective_go.html#commentary を読みましょう。 func や struct などのドキュメントのためのコメントは多少冗長であっても完全な文章でなくてはいけません。 このアプローチは godoc ドキュメントにするときにより効果を発揮します。 コメントは以下の例のように対象の名前で始まって、ピリオドで終わらなければいけません。
-// Request represents a request to run a command. type Request struct { ... // Encode writes the JSON encoding of req to w. func Encode(w io.Writer, req *Request) { ... " />
+// Request represents a request to run a command. type Request struct { ... // Encode writes the JSON encoding of req to w. func Encode(w io.Writer, req *Request) { ... また、コメントが正しい文章の終わりの印であるピリオドで終わらない場合に注意してください。 github.com/mailru/easyjson や github.com/golang/lint など多くのツールで型やメソッドの情報をマークするためにコメントを使っています。
+Declaring Empty Slices スライスの宣言の時は
+var t []string のほうが" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://knsh14.github.io/translations/go-codereview-comments/" />
 <meta property="article:published_time" content="2020-03-29T18:23:14+09:00" />
@@ -35,7 +39,9 @@ Comment Sentences http://golang.org/doc/effective_go.html#commentary を読み�
 go fmt あなたのコードに gofmt を走らせると、自動的に機械的に直すことのできるスタイルの大部分を修正してくれます。 世にあるGoのコードのほとんどすべてが gofmt を使っています。 この文章の残りは機械的に直すことのできないポイントについて解説します。
 代わりに goimports を使う手段もあります。 gofmt に加えて必要に応じてimport内に空行をつけたり消したりする機能があります。
 Comment Sentences http://golang.org/doc/effective_go.html#commentary を読みましょう。 func や struct などのドキュメントのためのコメントは多少冗長であっても完全な文章でなくてはいけません。 このアプローチは godoc ドキュメントにするときにより効果を発揮します。 コメントは以下の例のように対象の名前で始まって、ピリオドで終わらなければいけません。
-// Request represents a request to run a command. type Request struct { ... // Encode writes the JSON encoding of req to w. func Encode(w io.Writer, req *Request) { ... "/>
+// Request represents a request to run a command. type Request struct { ... // Encode writes the JSON encoding of req to w. func Encode(w io.Writer, req *Request) { ... また、コメントが正しい文章の終わりの印であるピリオドで終わらない場合に注意してください。 github.com/mailru/easyjson や github.com/golang/lint など多くのツールで型やメソッドの情報をマークするためにコメントを使っています。
+Declaring Empty Slices スライスの宣言の時は
+var t []string のほうが"/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -97,7 +103,352 @@ Comment Sentences http://golang.org/doc/effective_go.html#commentary を読み�
 
 <span style="color:#75715e">// Encode writes the JSON encoding of req to w.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Writer</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Request</span>) { <span style="color:#f92672">...</span>
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div><p>また、コメントが正しい文章の終わりの印であるピリオドで終わらない場合に注意してください。
+<a href="https://github.com/mailru/easyjson">github.com/mailru/easyjson</a> や <a href="https://github.com/golang/lint">github.com/golang/lint</a> など多くのツールで型やメソッドの情報をマークするためにコメントを使っています。</p>
+<h1 id="declaring-empty-slices">Declaring Empty Slices<a href="#declaring-empty-slices" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>スライスの宣言の時は</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">t</span> []<span style="color:#66d9ef">string</span>
+</code></pre></div><p>のほうが</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">string</span>{}
+</code></pre></div><p>よりも良いです。</p>
+<p>前者は nil のスライスを宣言しますが、後者は nil ではなく長さ0のものになります。</p>
+<p>JSON オブジェクトをエンコードする際など、限られた状況で nil ではなく長さ0のスライスのほうが好まれる状況があることに注目してください。
+<code>nil</code> スライスは <code>null</code> に変換されますが、<code>[]string{}</code> は <code>[]</code> に変換されます。</p>
+<p>インターフェースを設計するときは、nil のスライスと長さ0のスライスを区別しないようにしましょう。なぜなら微妙なプログラミングミスを引き起こすことがあるからです。</p>
+<p>より詳しい議論は Francesc Campoy の <a href="https://www.youtube.com/watch?v=ynoY2xz-F8s">発表</a>を参照してください</p>
+<h1 id="doc-comments">Doc Comments<a href="#doc-comments" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>全ての最上位にあったり外部に公開されているものは、docコメントがなければいけません。
+外部に公開されていない重要な関数や <code>type</code> 宣言にも同様です。
+<a href="http://golang.org/doc/effective_go.html#commentary">http://golang.org/doc/effective_go.html#commentary</a> を読むと、よりコメントの規則についての情報を得ることができます。</p>
+<h1 id="dont-panic">Don&rsquo;t Panic<a href="#dont-panic" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p><a href="http://golang.org/doc/effective_go.html#errors">http://golang.org/doc/effective_go.html#errors</a> を読みましょう。
+通常のエラーハンドリングで <code>panic</code> を使うのをやめましょう。
+なるべく <code>error</code> 型を含んだ複数の値を返すようにしましょう。</p>
+<h1 id="error-strings">Error Strings<a href="#error-strings" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>エラー文字列は頭文字を大文字にしたり、句読点で終わってはいけません。
+なぜならこの文字列は他のコンテキストで使われるケースがあるからです。
+つまり、<code>log.Print(&quot;Reading %s: %v&quot;, filename, err)</code> が途中で大文字を出力することがないように <code>fmt.Errorf(&quot;Something bad&quot;)</code> ではなく、 <code>fmt.Errorf(&quot;something bad&quot;)</code> を使いましょう。
+これはロギングのような暗黙的な行指向や、他のメッセージと組み合わせないものには適用されません。</p>
+<h1 id="handle-errors">Handle Errors<a href="#handle-errors" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p><a href="http://golang.org/doc/effective_go.html#errors">http://golang.org/doc/effective_go.html#errors</a> を読みましょう。
+<code>_</code> でエラーを無視してはいけません。
+もし関数がエラーを返してきたら、関数がちゃんと成功したか確認するためにチェックしてください。
+エラーをハンドリングして返すか、本当に例外的な場合のみ <code>panic</code> しましょう。</p>
+<h1 id="imports">Imports<a href="#imports" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>名前の衝突を回避するために package をリネームするのはやめましょう。
+いい package はリネームする必要がないものです。
+もし衝突した場合はローカルやプロジェクト固有の package 名を変更することをおすすめします。</p>
+<p>import を空行で幾つかのグループに分けましょう。
+標準パッケージは最初にグループにしましょう。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+    <span style="color:#e6db74">&#34;hash/adler32&#34;</span>
+    <span style="color:#e6db74">&#34;os&#34;</span>
+
+    <span style="color:#e6db74">&#34;appengine/foo&#34;</span>
+    <span style="color:#e6db74">&#34;appengine/user&#34;</span>
+
+    <span style="color:#e6db74">&#34;github.com/foo/bar&#34;</span>
+    <span style="color:#e6db74">&#34;rsc.io/goversion/version&#34;</span>
+)
+</code></pre></div><p><code>goimports</code> がこれは自動で行ってくれます。</p>
+<h1 id="import-dot">Import Dot<a href="#import-dot" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>. を使ったインポートは循環参照によってパッケージの一部がテストできない時などに役立ちます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">foo_test</span>
+
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;bar/testutil&#34;</span> <span style="color:#75715e">// also imports &#34;foo&#34;
+</span><span style="color:#75715e"></span>    . <span style="color:#e6db74">&#34;foo&#34;</span>
+)
+</code></pre></div><p>このケースでは、テストファイルはfooをインポートしているbar/testutilを使っていて、循環参照になってしまうのでpackage fooに置くことができません。
+なので <code>import .</code> を使ってpackage fooの一部のように見せかけます。
+このケースを除いて、<code>import .</code> をあなたのプログラムで使うべきではありません。
+Quuxのような名前が今のパッケージの識別子なのかインポートされたものなのかが非常にわかりにくくなって、可読性が極端に落ちるからです。</p>
+<h1 id="indent-error-flow">Indent Error Flow<a href="#indent-error-flow" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>初めにコード、特にエラーハンドリングの分岐を最小になるように努めましょう。
+通常通るコードを簡単に追うことができるので、可読性が上がります。</p>
+<p>例えば、こうするのではなく、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+    <span style="color:#75715e">// error handling
+</span><span style="color:#75715e"></span>} <span style="color:#66d9ef">else</span> {
+    <span style="color:#75715e">// normal code
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>こう書くべきです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+    <span style="color:#75715e">// error handling
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#75715e">// or continue, etc.
+</span><span style="color:#75715e"></span>}
+<span style="color:#75715e">// normal code
+</span></code></pre></div><p>もし初期化のコードでこのようなコードがあるなら</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">f</span>(); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+    <span style="color:#75715e">// error handling
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span>
+} <span style="color:#66d9ef">else</span> {
+    <span style="color:#75715e">// use x
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>変数宣言の行を個別にしてこうするべきです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">f</span>()
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+    <span style="color:#75715e">// error handling
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span>
+}
+<span style="color:#75715e">// use x
+</span></code></pre></div><h1 id="initialisms">Initialisms<a href="#initialisms" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>変数名にある頭字語は一貫性がなければいけません。
+例えば、&ldquo;URL&rdquo; は &ldquo;URL&rdquo; か &ldquo;url&rdquo; でなければならず、&ldquo;Url&rdquo; ではいけません。
+&ldquo;ServeHttp&rdquo; ではなく &ldquo;ServeHTTP&rdquo; となります。
+複数のイニシャル語から構成される語では、&ldquo;xmlHTTPRequest&rdquo; や &ldquo;XMLHTTPRequest&rdquo; の様になります。</p>
+<p>&ldquo;identifier&rdquo; の省略である &ldquo;ID&rdquo; にもこのルールは適用され、 &ldquo;appId&rdquo; ではなく &ldquo;appID&rdquo; となります。</p>
+<p>プロトコルバッファコンパイラによって生成されたコードはこのルールを免除します。
+人が書いたコードには、機械が書いたコードよりも厳しい基準を要求します。</p>
+<h1 id="line-length">Line Length<a href="#line-length" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>Goでは1行の長さを決めてはいませんが、長過ぎないようにしてください。
+同じように繰り返しが多い時など、1行を短く保ちたいがために無理に改行を入れる必要はないでしょう。</p>
+<p>人が不自然な位置で改行を挟む時(多かれ少なかれ例外はありますが、関数呼び出しや関数宣言の中頃です)、適切な数の引数と、適切に短い変数名になっていれば、改行は不要なはずです。
+長い行は長い名前によって出来上がりますし、長い名前を取り除くことは多くの手助けになります。</p>
+<p>言い換えると、行の長さで改行するのではなく、行の意味によって改行するべきです。
+もし長過ぎる行を見つけたときは、名前や処理の流れを改善してみるとより良い結果になるはずです。</p>
+<p>これは関数がどれだけ長いかについても全く同じです。
+「関数はN行以下でなければいけない」というルールはありませんが、長すぎたり短すぎたりする関数はあります。
+そういったときに行数を数えるのではなく、この関数はどこで区切れるのかを考えるべきです。</p>
+<h1 id="mixed-caps">Mixed Caps<a href="#mixed-caps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p><a href="http://golang.org/doc/effective_go.html#mixed-caps">http://golang.org/doc/effective_go.html#mixed-caps</a> を読んでください。
+これは他の言語の取り決めとは異なります。
+例えば、公開しない定数は <code>MaxLength</code> や <code>MAX_LENGTH</code> ではなく <code>maxLength</code> となります。</p>
+<p>同じことが <a href="https://qiita.com/knsh14/items/8b73b31822c109d4c497#initialisms">initialisms</a> でも説明されています。</p>
+<h1 id="named-result-parameters">Named Result Parameters<a href="#named-result-parameters" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>このような名前付き戻り値がGodocではどのように見えるか考えてみましょう</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>) <span style="color:#a6e22e">Parent1</span>() (<span style="color:#a6e22e">node</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>)
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>) <span style="color:#a6e22e">Parent2</span>() (<span style="color:#a6e22e">node</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>, <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>)
+</code></pre></div><p>なにかぎこちない感じになります。こちらのほうがよいでしょう。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>) <span style="color:#a6e22e">Parent1</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>) <span style="color:#a6e22e">Parent2</span>() (<span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>, <span style="color:#66d9ef">error</span>)
+</code></pre></div><p>一方で関数が同じ型の返り値を複数返したり、結果が文脈からはっきりとわかりにくい場合、名前付き戻り値は有効です。
+関数内で戻り値のための変数を宣言するのを省略したいがために名前付き戻り値を使うのはやめましょう。
+APIが冗長になる上に、実装の簡潔さも失われます。</p>
+<p>この例よりも</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">f</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Foo</span>) <span style="color:#a6e22e">Location</span>() (<span style="color:#66d9ef">float64</span>, <span style="color:#66d9ef">float64</span>, <span style="color:#66d9ef">error</span>)
+</code></pre></div><p>こちらのほうが、よりわかりやすいでしょう。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Location returns f&#39;s latitude and longitude.
+</span><span style="color:#75715e">// Negative values mean south and west, respectively.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">f</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Foo</span>) <span style="color:#a6e22e">Location</span>() (<span style="color:#a6e22e">lat</span>, <span style="color:#a6e22e">long</span> <span style="color:#66d9ef">float64</span>, <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>)
+</code></pre></div><p>ただの <code>return</code> は数行の関数なら大丈夫ですが、ある程度の大きさの関数になると、返す変数を明確にしたほうがよいでしょう。
+当然ですが、ただの <code>return</code> が使えるというだけでは名前付き戻り値を使う理由にはなりません。
+明快なドキュメントを書くことはたかが１〜２行を節約するよりも何倍も価値があります。</p>
+<p>最後に、幾つかのケースでは遅延クロージャで値を変更するために名前付き戻り値を指定する必要があります。
+その場合は大丈夫です。</p>
+<h1 id="naked-returns">Naked Returns<a href="#naked-returns" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>Named Result Parameters と同じ</p>
+<h1 id="package-comments">Package Comments<a href="#package-comments" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>Godocで読める全てのコメントと同じようにパッケージのコメントはパッケージ節の前に空行無しで書かなければいけません。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Package math provides basic constants and mathematical functions.
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">math</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">/*
+</span><span style="color:#75715e">Package template implements data-driven templates for generating textual
+</span><span style="color:#75715e">output such as HTML.
+</span><span style="color:#75715e">....
+</span><span style="color:#75715e">*/</span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">template</span>
+</code></pre></div><p>main パッケージのコメントは、他のスタイルとして main の替わりにバイナリ名を使っても良いでしょう。(文頭に来る場合はもちろん大文字になります。)
+<code>seegen</code> というコマンドの main パッケージのコメントは次のようになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Binary seedgen ...
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Command seedgen ...
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Program seedgen ...
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// The seedgen command ...
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// The seedgen program ...
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Seedgen ..
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</code></pre></div><p>これらは例であり、状況によって変化しても大丈夫です。</p>
+<p>ですがこれらのコメントは公開されるものなので、正しい英語で書かなければ行けません。先頭の文字を小文字で始めたりすることはできません。
+バイナリ名が最初の単語に来た場合、コマンドライン実行時と異なったとしても大文字で書きましょう。</p>
+<p><a href="http://golang.org/doc/effective_go.html#commentary">http://golang.org/doc/effective_go.html#commentary</a> を読むとより詳細なコメントに関するアドバイスが有ります。</p>
+<h1 id="package-names">Package Names<a href="#package-names" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>パッケージから公開されている全ての識別子への参照はパッケージ名を通して行われるので、識別子にパッケージ名を使っている場合は外すべきです。
+例えば、chubbyというパッケージの中ではChubbyFileという名前を作っては、呼び出すときにchubby.ChubbyFileとなってしまうので、避けましょう。
+その代わりにFileという名前にして、使う側がchubby.Fileとできるのでよりよいでしょう。
+<a href="http://golang.org/doc/effective_go.html#package-names">http://golang.org/doc/effective_go.html#package-names</a> にはより多くの情報があります。</p>
+<h1 id="pass-values">Pass Values<a href="#pass-values" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>たかだか数バイトを節約するために引数にポインタを指定するのは辞めましょう。
+もし関数が全体を通して引数 <code>x</code>を <code>*x</code> として呼び出しているなら、引数をポインタにするべきではありません。
+この一般的なインスタンスは文字列のポインタ(<code>*string</code>)や、インターフェースのポインタ(<code>*io.Reader</code>)を渡すことも含みます。
+どちらのケースでも、変数自身は固定されていて、直接値が渡されます。
+このアドバイスは、大きなStructや今後大きくなりそうなものには適用しません。</p>
+<h1 id="receiver-names">Receiver Names<a href="#receiver-names" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>レシーバの名前はそれがなんであるかを適切に表したものでなければいけません。
+大抵の場合その型1〜2文字の略称で足ります。 (Clientであれば c や cl のように)
+<code>me</code> や <code>this</code>, <code>self</code>のように関数ではなく、メソッドに重点を置いたオブジェクト指向の典型的な名前を使うのは辞めましょう。
+レシーバ名はその役割が明らかで、ドキュメントとしての目的もないので、引数名ほど説明的である必要がありません。
+そのメソッドのあらゆる行に登場するので、できるだけ短いほうがよいでしょう。慣れてくればとても簡素でよく思えてきます。
+レシーバ名は統一してください。あるところで <code>client</code> を <code>c</code> としたなら、他のところで <code>cl</code> としてはいけません。</p>
+<h1 id="receiver-type">Receiver Type<a href="#receiver-type" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>メソッドのレシーバーをポインタにするか否かを選択することは常に難しいものです。特に新米Gopherには難しいでしょう。
+疑わしい場合はポインタを受け取りますが、小さい構造体や、プリミティブな型の場合は、値を受け取るだけのほうが効率的な場合があります。
+便利なガイドラインを下に示します。</p>
+<ul>
+<li>レシーバが <code>map</code>、<code>func</code>、チャネル ならポインタを使うべきではありません。レシーバがスライスで、メソッドがスライスを作りなおさない場合は、ポインタを使うべきではありません。</li>
+<li>メソッドが値を変更する必要がある場合、レシーバはポインタでなければいけません。</li>
+<li>レシーバが <code>sync.Mutex</code> か、似たような同期するフィールドを持つ構造体なら、レシーバはポインタでなければいけません。</li>
+<li>レシーバが大きな構造体や配列なら、ポインタはとても効果的です。では大きいとはどれくらいなのでしょう？もし構造体の全ての値を引数に渡すと仮定してください。多すぎると感じたなら、それはポインタにしても良いくらいの大きさです。</li>
+<li>関数が同時に実行されたりメソッドが呼び出された時に、レシーバの値を変更するでしょうか？値渡しではメソッドが実行されるときにレシーバのコピーを生成します。なのでメソッドの外ではレシーバへの変更が適用されません。変更がオリジナルのレシーバに適用される必要があるなら、レシーバはポインタです。</li>
+<li>レシーバが、値を変更されるかも知れない構造体、配列、スライス、その他の要素であった場合、レシーバをポインタにしたほうが、読み手にとってよりわかりやすいでしょう。</li>
+<li>レシーバが小さく、本来値型であったり(例えば <code>time.Time</code> のようなもの) 、変更するフィールドやポインタがない構造体や配列、あるいは <code>int</code> や <code>string</code> のようなシンプルな型の場合は、レシーバが値であるほうが良い場合があります。値のみのレシーバは生成されるゴミの量を減らすことができます。もし値がメソッドに渡されると、ヒープ領域にメモリを確保する代わりに、スタックメモリのコピーが走ります。(コンパイラはこのヒープメモリ確保を避けようとしますが、常には上手く行きません) プロファイラで確認する前にこの理由で値レシーバにするのは辞めましょう。</li>
+<li>これらの理由に当てはまらず、まだ迷っている場合はレシーバをポインタにしましょう。</li>
+</ul>
+<h1 id="useful-test-failures">Useful Test Failures<a href="#useful-test-failures" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>テストが失敗した時には、以下の事柄を伝える有効なメッセージを出力しましょう。</p>
+<ul>
+<li>なにが悪かったのか</li>
+<li>どんな入力があったか</li>
+<li>実際にどんな値が来たのか</li>
+<li>どんな値が来ることを期待していたのか</li>
+</ul>
+<p><code>AssertFoo</code> ヘルパーの束をを書くことは魅力的ですが、あなたのヘルパーはもっと役に立つメッセージを出力できるはずです。
+あなたの失敗したテストをデバッグする人はあなたや、あなたのチームではないことを前提にしています。
+Goの典型的なテスト失敗時のコードはこのようなものです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">got</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">tt</span>.<span style="color:#a6e22e">want</span> {
+    <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Foo(%q) = %d; want %d&#34;</span>, <span style="color:#a6e22e">tt</span>.<span style="color:#a6e22e">in</span>, <span style="color:#a6e22e">got</span>, <span style="color:#a6e22e">tt</span>.<span style="color:#a6e22e">want</span>) <span style="color:#75715e">// or Fatalf, if test can&#39;t test anything more past this point
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p><code>actual != order</code> の順で並んでいて、メッセージでも同じ順番で出力していることに注目してください。
+幾つかのテストフレームワークでは <code>0 != x, &quot;expected 0, got x&quot;</code> のように、この順を逆にして書くことを推奨していますが、Goではそうではありません。</p>
+<p>もしこのやり方で大量にタイプしなければいけないようなら、Table-Driven-Testが欲しくなるかもしれません。</p>
+<p>もう1つのテスト失敗時の曖昧さをなくすためのテクニックとして、入力ごとに <code>TestFoo</code> をラップした異なるテスト関数を作る小方法があります。この場合関数の名前と共に失敗します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestSingleValue</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) { <span style="color:#a6e22e">testHelper</span>(<span style="color:#a6e22e">t</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">80</span>}) }
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestNoValues</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>)    { <span style="color:#a6e22e">testHelper</span>(<span style="color:#a6e22e">t</span>, []<span style="color:#66d9ef">int</span>{}) }
+</code></pre></div><p>いずれにせよ、将来あなたのコードをデバッグする人に有効なメッセージを届ける責任はあなたにあります。</p>
+<h1 id="variable-names">Variable Names<a href="#variable-names" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>Goでの変数名はより短くあるべきです。
+特に限定されたスコープで使われるローカル変数は短くあるべきです。
+<code>lineCount</code> よりも <code>c</code> ですし、 <code>lineIndex</code> よりも <code>i</code> です。</p>
+<p>基本的なルール</p>
+<ul>
+<li>宣言された箇所よりも離れた場所でその変数が使われるなら、より説明的な名前にするべきです。</li>
+<li>メソッドレシーバは1〜2文字で十分です</li>
+<li>ループの添字や読み込みのリーダーのような一般的な変数は(<code>i</code> や <code>r</code> のように)1文字でよいでしょう。</li>
+<li>より珍しい物や、パッケージ外で使われるものの名前はより説明的にしましょう。</li>
+</ul>
+<h1 id="contexts">Contexts<a href="#contexts" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p><code>context.Context</code> 型はセキュリティの為の証明情報、デバッグトレースのための情報、デッドライン(どう訳そう?)、そして API やプロセス間のキャンセル処理のためのシグナルを持っています。
+Go のプログラムは入ってきた RPC や HTTP リクエストから、でていくリクエストに向けて関数呼び出しの流れに沿って明示的に Context を渡します。</p>
+<p>大体の関数では Context は最初のパラメータとして渡します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">F</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#75715e">/* other arguments */</span>) {}
+</code></pre></div><p>A function that is never request-specific may use context.Background(), but err on the side of passing a Context even if you think you don&rsquo;t need to.
+Contextを渡す普通の方法は <code>context.Background()</code> を直接呼び出す方法だけです。</p>
+<p>Contextを構造体のメンバーに含めては行けません。替わりにすべてのメソッドに引数として渡してください。
+唯一の例外はライブラリのシグネチャと一致させなければならない時のみです。</p>
+<p>カスタムのコンテキスト型を作成したり、関数の引数に取ったコンテキスト以外のインターフェースを使用しないでください。</p>
+<p>If you have application data to pass around, put it in a parameter, in the receiver, in globals, or, if it truly belongs there, in a Context value.</p>
+<p>コンテキストはイミュータブルなので、複数の呼び出しで同じキャンセル処理やトレース情報を使いまわす場合同じ Context を使うと良いでしょう。</p>
+<h1 id="copying">Copying<a href="#copying" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>予期しない参照を避けるために、別のパッケージから構造体をコピーするときは注意深くやりましょう。
+例えば、 <code>bytes.Buffer</code> 型は <code>[]byte</code> と、短い文字列の最適化のためにスライスが参照するための小さいバイト配列を持っています。
+あなたが <code>Buffer</code> をコピーすると、中のスライスはオリジナルのものを参照してしまい、その後のメソッド呼び出して思わぬ副作用が起きることがあります。</p>
+<p>大抵の場合、もしメソッドがポインタの値に関連付けられているのなら <code>T</code> ではなく、<code>*T</code> を使うべきです。</p>
+<h1 id="crypt-rand">Crypt Rand<a href="#crypt-rand" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p><code>math/rand</code> をたとえ使い捨てのものであっても鍵の生成のために使ってはいけません。
+シードを設定されていない場合、ジェネレータが完全に予測可能です。 <code>time.Nanoseconds()</code> でシードが与えられていた場合でも、2〜3bitのエントロピーしかありません。
+替わりに <code>crypto/rand</code> の <code>Reader</code> を使いましょう。それを文字としてほしい場合は、16進数か base64 エンコードしましょう。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;crypto/rand&#34;</span>
+    <span style="color:#75715e">// &#34;encoding/base64&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// &#34;encoding/hex&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Key</span>() <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">buf</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">byte</span>, <span style="color:#ae81ff">16</span>)
+    <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Read</span>(<span style="color:#a6e22e">buf</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        panic(<span style="color:#a6e22e">err</span>)  <span style="color:#75715e">// out of randomness, should never happen
+</span><span style="color:#75715e"></span>    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%x&#34;</span>, <span style="color:#a6e22e">buf</span>)
+    <span style="color:#75715e">// or hex.EncodeToString(buf)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// or base64.StdEncoding.EncodeToString(buf)
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h1 id="examples">Examples<a href="#examples" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>新しいパッケージを追加した時、使い方のサンプルを含めましょう。
+実行可能な例や、一連の流れを追えるテストなどです。</p>
+<p>詳しくはこちらを読んでみるといいと思います。https://blog.golang.org/examples</p>
+<h1 id="goroutine-lifetimes">Goroutine Lifetimes<a href="#goroutine-lifetimes" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>goroutine を生成する時、いつ終了されるか明確にして置かなければ行けません。
+goroutine は channel の送受信をブロックによってメモリリークを起こす場合があります。
+ガベージコレクタはブロックされている channel に到達できなくても、goroutine を停止させません。</p>
+<p>もしリークしていなかった場合でも、必要にならなくなった物を残しておくのは、微妙で調査しにくい問題を起こすことになりかねません。
+クローズした channel に何をかを送ると panic を起こして終了してくれます。
+まだ使われている入力を「結果が必要でなくなったあと」に変更すると、データ競合を引き起こす場合があります。
+goroutine を無駄に長く残しておくと、予想しないメモリの使い方をされる恐れがあります。</p>
+<p>並行処理はgoroutineの生存期間が明確になるように、十分にシンプルに書きましょう。
+それができない場合は、いつどんな理由で goroutine が終了するかドキュメントに書きましょう。</p>
+<h1 id="in-band-errors">In-Band Errors<a href="#in-band-errors" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>C言語や似たようなものの場合、 -1 や null を返すことでエラーや結果を発見できなかったことを表現するのは一般的に行われている方法です。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Lookup returns the value for key or &#34;&#34; if there is no mapping for key.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Lookup</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span>
+
+<span style="color:#75715e">// Failing to check a for an in-band error value can lead to bugs:
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Parse</span>(<span style="color:#a6e22e">Lookup</span>(<span style="color:#a6e22e">key</span>))  <span style="color:#75715e">// returns &#34;parse failure for value&#34; instead of &#34;no value for key&#34;
+</span></code></pre></div><p>Go は複数の値を返すことができるので、よりよい解決方法を使うことができます。
+関数はクライアントに戻り値がエラーを表現しているか調べることを求めるのではなく、他の値が正しく取得できたか示す値を追加して返すべきです。
+この値は Error 型かもしれませんし、説明不要な場合は bool 値でもいいでしょう。そしてこれは戻り値のなかで最後に位置しているべきです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Lookup returns the value for key or ok=false if there is no mapping for key.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Lookup</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">value</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">ok</span> <span style="color:#66d9ef">bool</span>)
+</code></pre></div><p>この方法で呼び出し側に正しくない値が渡るのを防ぐことができます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">Parse</span>(<span style="color:#a6e22e">Lookup</span>(<span style="color:#a6e22e">key</span>))  <span style="color:#75715e">// compile-time error
+</span></code></pre></div><p>そして堅牢で、読みやすいコードを書きやすくなります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Lookup</span>(<span style="color:#a6e22e">key</span>)
+<span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">ok</span>  {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;no value for %q&#34;</span>, <span style="color:#a6e22e">key</span>)
+}
+<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Parse</span>(<span style="color:#a6e22e">value</span>)
+</code></pre></div><p>この方法は外向けの func だけではなく、内部で使われているものにも適用できます。</p>
+<p>nil, &ldquo;&quot;, 0, や -1 のような値を返すことは、その値が正しいときや、他の値と別に処理する必要が無い場合は良い選択肢です。</p>
+<p>strings などいくつかの標準ライブラリでは in-band エラーを返すことがあります。
+これによって文字列を操作するためのコードが大幅に削減され、プログラマが真面目に処理する必要が無いようにしています。
+一般的には Go のコードはエラーのための値を返すべきです。</p>
+<h1 id="interfaces">Interfaces<a href="#interfaces" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>Go のインターフェースは大抵パッケージに含まれており、パッケージに実装されている値を使うのではなく、インターフェース型を使います。(訳微妙)
+パッケージを実装する際には(ポインタや構造体のような)具体的な型を返さなければいけません。
+この方法だと使う側の修正なしに、新しいメソッドを追加することができます。</p>
+<p>モックのためにAPIの実装側にインターフェースを定義してはいけません。替わりに実際に実装された公開APIからテストできるようなAPIを設計しましょう。</p>
+<p>使われる前にインターフェースを定義しては行けません。現実的な使い方のサンプルがなければ、そのどんなメソッドを含めるかはもちろん、そのインターフェースが必要かどうかわかりません。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">consumer</span>  <span style="color:#75715e">// consumer.go
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Thinger</span> <span style="color:#66d9ef">interface</span> { <span style="color:#a6e22e">Thing</span>() <span style="color:#66d9ef">bool</span> }
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Foo</span>(<span style="color:#a6e22e">t</span> <span style="color:#a6e22e">Thinger</span>) <span style="color:#66d9ef">string</span> { <span style="color:#960050;background-color:#1e0010">…</span> }
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">consumer</span> <span style="color:#75715e">// consumer_test.go
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">fakeThinger</span> <span style="color:#66d9ef">struct</span>{ <span style="color:#960050;background-color:#1e0010">…</span> }
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">t</span> <span style="color:#a6e22e">fakeThinger</span>) <span style="color:#a6e22e">Thing</span>() <span style="color:#66d9ef">bool</span> { <span style="color:#960050;background-color:#1e0010">…</span> }
+<span style="color:#960050;background-color:#1e0010">…</span>
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">Foo</span>(<span style="color:#a6e22e">fakeThinger</span>{<span style="color:#960050;background-color:#1e0010">…</span>}) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;x&#34;</span> { <span style="color:#960050;background-color:#1e0010">…</span> }
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// DO NOT DO IT!!!
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">producer</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Thinger</span> <span style="color:#66d9ef">interface</span> { <span style="color:#a6e22e">Thing</span>() <span style="color:#66d9ef">bool</span> }
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">defaultThinger</span> <span style="color:#66d9ef">struct</span>{ <span style="color:#960050;background-color:#1e0010">…</span> }
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">t</span> <span style="color:#a6e22e">defaultThinger</span>) <span style="color:#a6e22e">Thing</span>() <span style="color:#66d9ef">bool</span> { <span style="color:#960050;background-color:#1e0010">…</span> }
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewThinger</span>() <span style="color:#a6e22e">Thinger</span> { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">defaultThinger</span>{ <span style="color:#960050;background-color:#1e0010">…</span> } }
+</code></pre></div><p>替わりに具体的な型を返して、consumer側にはproducerの実装をモックしておきましょう。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">producer</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Thinger</span> <span style="color:#66d9ef">struct</span>{ <span style="color:#960050;background-color:#1e0010">…</span> }
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">t</span> <span style="color:#a6e22e">Thinger</span>) <span style="color:#a6e22e">Thing</span>() <span style="color:#66d9ef">bool</span> { <span style="color:#960050;background-color:#1e0010">…</span> }
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewThinger</span>() <span style="color:#a6e22e">Thinger</span> { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Thinger</span>{ <span style="color:#960050;background-color:#1e0010">…</span> } }
+</code></pre></div><h1 id="synchronous-functions">Synchronous Functions<a href="#synchronous-functions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>非同期処理よりも同期処理(結果を直接返すか、値を返す前にコールバックやchannelの操作が終わっている関数) を好みます。</p>
+<p>同期処理はgoroutineは呼び出したメソッドの中で閉じていて、それらの生存期間や、リーク、データ競合を推測するのが簡単になります。
+そしてわざわざ同期をとったり待たなくても入力を渡して出力を確認することができて、テストが簡単になります。</p>
+<p>もし呼び出し側がより同時並行性を求めるなら、呼び出し側で別の goroutine から呼び出してあげれば簡単に追加できます。
+ですが、不必要な並行処理を呼び出し側から減らすのは非常に難しいですし、ときに不可能です。</p>
 
 		</div>
 	</main>
