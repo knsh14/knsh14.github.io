@@ -6,10 +6,33 @@
     <description>Recent content on knsh14</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-ja</language>
-    <lastBuildDate>Wed, 06 Nov 2019 01:12:03 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 18:25:14 +0900</lastBuildDate>
     
 	<atom:link href="https://knsh14.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Works</title>
+      <link>https://knsh14.github.io/works/</link>
+      <pubDate>Sun, 29 Mar 2020 18:25:14 +0900</pubDate>
+      
+      <guid>https://knsh14.github.io/works/</guid>
+      <description>Translations 英語の文章を日本語へ翻訳しています。
+ Go CodeReview Comments Uber Style Guide Sourcegraph Go style guide  原文    Qiita Presentations  uber-go/guide の解説  golang.tokyo #27   チャネルの仕組み  golang.tokyo #17   Go でインタプリタを書いてみよう  Go Conference 2017 Autumn    </description>
+    </item>
+    
+    <item>
+      <title>Go Codereview Comments</title>
+      <link>https://knsh14.github.io/translations/go-codereview-comments/</link>
+      <pubDate>Sun, 29 Mar 2020 18:23:14 +0900</pubDate>
+      
+      <guid>https://knsh14.github.io/translations/go-codereview-comments/</guid>
+      <description>原文
+go fmt あなたのコードに gofmt を走らせると、自動的に機械的に直すことのできるスタイルの大部分を修正してくれます。 世にあるGoのコードのほとんどすべてが gofmt を使っています。 この文章の残りは機械的に直すことのできないポイントについて解説します。
+代わりに goimports を使う手段もあります。 gofmt に加えて必要に応じてimport内に空行をつけたり消したりする機能があります。
+Comment Sentences http://golang.org/doc/effective_go.html#commentary を読みましょう。 func や struct などのドキュメントのためのコメントは多少冗長であっても完全な文章でなくてはいけません。 このアプローチは godoc ドキュメントにするときにより効果を発揮します。 コメントは以下の例のように対象の名前で始まって、ピリオドで終わらなければいけません。
+// Request represents a request to run a command. type Request struct { ... // Encode writes the JSON encoding of req to w. func Encode(w io.Writer, req *Request) { ... </description>
+    </item>
     
     <item>
       <title>golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました</title>
