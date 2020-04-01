@@ -14,18 +14,7 @@
 			<pubDate>Wed, 06 Nov 2019 01:12:03 +0900</pubDate>
 			
 			<guid>https://knsh14.github.io/posts/talk-about-guide-in-golang-tokyo-27/</guid>
-			<description>11月5日に行われたgolang.tokyo#27で「uber-go/guide の解説」というタイトルで発表しました。
-資料はこちらです。
-内容 uber-go/guideというUberがまとめたコードレビューに関するドキュメントがあります。
-これを自分が日本語に翻訳しました。 このguideから自分の翻訳へのリンクも張ってもらっています。
-このドキュメントを翻訳した際、どのように翻訳したのかやそもそもなぜ翻訳をやろうと思ったのかなどを説明しました。
-そして、自分が読んでいて特にこれは参考になったなと思ったセクションの一部を取り上げて解説しました。
-最後に自分が最近取り組んでいるuber-go/guideのセクションをチェックしてくれるulinterというlinterについても話しました。
-発表した感想 良かったこと Twitter上では期待してくれる方がいて、良かったというツイートもいただけました。 かなりよいフィードバックがあったので素直にうれしかったです。
-自分は技術的文章を翻訳する際の期間や方法の話はこれまであまり聞いたことがなかったです。 また、自分も発表したことがなかったため、かなり新鮮でした。 この話を聞いてくれた方はどう感じたのか気になります。
-失敗したなと思ったこと ulinterの話をする際に、コードを紹介しながら実装の説明をしました。 AssignStmtやTypeAssertExprなど、GoのASTの話を具体的に話ました。 しかし、会場の方はGoの静的解析について事前知識があまりなさそうな雰囲気を感じました。 いきなりこれらの話を出すのは聞いてくださった方々を置いていってしまったと反省しています。
-発表時間が少し予定時間を超えたのでこれも収まるように配分練習等すべきでした。
-終わりに 前回外部発表したときから1ヵ月以上期間が空いたので緊張しましたがなんとか発表できてよかったです。 聞いてくれた方はこれを機会に英語で書かれたドキュメントも恐れずに読んで見てほしいです。</description>
+			<description>11月5日に行われたgolang.tokyo#27で「uber-go/guide の解説」というタイトルで発表しました。 資料はこちらです。 内容</description>
 			<content type="html"><![CDATA[<p>11月5日に行われた<a href="https://techplay.jp/event/753881">golang.tokyo#27</a>で「uber-go/guide の解説」というタイトルで発表しました。<br>
 資料は<a href="https://docs.google.com/presentation/d/10H6tvkVG2Qb9DNeSITAiKP-5BJKHqwnWFRCxEQYbpYQ/edit#slide=id.p">こちら</a>です。</p>
 <h1 id="内容">内容</h1>
@@ -60,16 +49,7 @@ AssignStmtやTypeAssertExprなど、GoのASTの話を具体的に話ました。
 			<pubDate>Fri, 27 Sep 2019 12:30:29 +0900</pubDate>
 			
 			<guid>https://knsh14.github.io/posts/textlint-reviewdog/</guid>
-			<description>この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。
-モチベーション 技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。
-私は文章力を向上させるためにこのブログを更新しています。 そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。 TechBoosterが公開しているRe:VIEW TemplateではCircleCIを利用してPull Requestにコメントを付けています。 しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。 そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。
-口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。
-textlintのインストール 初めにnpmをインストールします。 私はnodebrewを利用してインストールしました。
-次にnpm initコマンドでモジュールを定義します。 このコマンドを実行して質問に答えていくとpackage.jsonが作成されます。
-npm installコマンドでtextlintとtextlintのためのプラグインなどをインストールします。
-npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh .textlintrc や設定ファイルなどはReVIEW-Templateから持ってきます。 この設定ファイルを使うことで技術書典と同じレベルでチェックできます。
-workflowの設定 リポジトリのルートに .github/workflow ディレクトリを作成します。 このディレクトリに textlint.yaml を作成し、次のワークフローを設定します。
-name: textlint on: pull_request: branches: - master jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 - name: Use Node.js uses: actions/setup-node@v1 with: node-version: 12.x - name: npm install run: | npm install - name: install reviewdog run: | curl -sfL https://raw.</description>
+			<description>この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。 モチベーション 技術書典の</description>
 			<content type="html"><![CDATA[<p>この記事では<a href="https://github.com/reviewdog/reviewdog">reviewdog</a>と<a href="https://github.com/textlint/textlint">textlint</a>を組み合わせてGitHub Actionsで利用する方法を説明します。</p>
 <h1 id="モチベーション">モチベーション</h1>
 <p>技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。</p>
@@ -91,34 +71,34 @@ TechBoosterが公開している<a href="https://github.com/TechBooster/ReVIEW-T
 <h1 id="workflowの設定">workflowの設定</h1>
 <p>リポジトリのルートに <code>.github/workflow</code> ディレクトリを作成します。
 このディレクトリに <code>textlint.yaml</code> を作成し、次のワークフローを設定します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: textlint
-
-<span style="color:#66d9ef">on</span>:
-  <span style="color:#66d9ef">pull_request</span>:
-    <span style="color:#66d9ef">branches</span>:
-    - master
-
-<span style="color:#66d9ef">jobs</span>:
-  <span style="color:#66d9ef">build</span>:
-    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
-    <span style="color:#66d9ef">steps</span>:
-    - <span style="color:#66d9ef">uses</span>: actions/checkout@v1
-    - <span style="color:#66d9ef">name</span>: Use Node.js
-      <span style="color:#66d9ef">uses</span>: actions/setup-node@v1
-      <span style="color:#66d9ef">with</span>:
-        <span style="color:#66d9ef">node-version</span>: <span style="color:#ae81ff">12.</span>x
-    - <span style="color:#66d9ef">name</span>: npm install
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">        npm install</span>
-    - <span style="color:#66d9ef">name</span>: install reviewdog
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13</span>
-    - <span style="color:#66d9ef">name</span>: lint
-      <span style="color:#66d9ef">env</span>:
-        <span style="color:#66d9ef">REVIEWDOG_GITHUB_API_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review</span>
-</code></pre></div><p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">name</span><span class="p">:</span><span class="w"> </span>textlint<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">pull_request</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">branches</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- master<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">jobs</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">build</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">runs-on</span><span class="p">:</span><span class="w"> </span>ubuntu-latest<span class="w">
+</span><span class="w">    </span><span class="k">steps</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/checkout@v1<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Use<span class="w"> </span>Node.js<span class="w">
+</span><span class="w">      </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/setup-node@v1<span class="w">
+</span><span class="w">      </span><span class="k">with</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="k">node-version</span><span class="p">:</span><span class="w"> </span><span class="m">12.</span>x<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">        npm install</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>install<span class="w"> </span>reviewdog<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>lint<span class="w">
+</span><span class="w">      </span><span class="k">env</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="k">REVIEWDOG_GITHUB_API_TOKEN</span><span class="p">:</span><span class="w"> </span>${{<span class="w"> </span>secrets.GITHUB_TOKEN<span class="w"> </span>}}<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review</span><span class="w">
+</span></code></pre></div><p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
 <code>npm install</code>を毎回キャッシュを使わずにインストールしていますが、現時点で実行時間が30秒程度なのであまり問題になっていません。</p>
 ]]></content>
 		</item>
@@ -129,26 +109,7 @@ TechBoosterが公開している<a href="https://github.com/TechBooster/ReVIEW-T
 			<pubDate>Tue, 24 Sep 2019 19:36:24 +0900</pubDate>
 			
 			<guid>https://knsh14.github.io/posts/techbookfest-7/</guid>
-			<description>技術書典7に参加してきました。 私は今回&amp;rdquo;かまてん&amp;ldquo;というサークルでGoのテストについての本を頒布しました。
-他にも
- golang.tokyo メルカリ技術書典部  に記事を寄稿しました。
-寄稿した記事の概要 かまてん かまてんは私かまたと@tenntennの二人のサークルです。
-今回はGoのテストについて使い方やテストのためのテクニック、テストしやすいコードを書くためにはどこを意識して書いたらよいのかを解説しています。
-ベースにしたのはGopherCon 2017でMitchell Hashimotoが発表した&amp;quot;Advanced Testing with Go&amp;quot;です。 彼の発表資料や動画をベースにそれぞれの項目を噛み砕いて説明し、理解が深まるようにいくつかの項目にはサンプルをつけました。 発表資料へのリンクは次の3つです。
- https://speakerdeck.com/mitchellh/advanced-testing-with-go https://www.youtube.com/watch?v=8hQG7QlcLBk https://about.sourcegraph.com/go/advanced-testing-in-go  二人なので常にギリギリの戦いをしながら本を書いています。 今回も当日まで頑張って色々修正してなんとか頒布することができました。
-後日BOOTHにて当日頒布したものからもう少し追記したものを販売する予定です。 当日買いそびれた方はそちらで購入していただけます。
-golang.tokyo Goのコミュニティであるgolang.tokyoでは有志のメンバーが集って、それぞれが好きなトピックについて書きました。 自分はGopherCon 2019で観てよいと感じたGioというGoのGUIライブラリについて、サンプルを使いながら紹介しました。
-Gioについての資料は次の4つがあります。
- https://git.sr.ht/~eliasnaur/gio https://godoc.org/gioui.org https://www.youtube.com/watch?v=9D6eWP4peYM https://go-talks.appspot.com/github.com/eliasnaur/gophercon-2019-talk/gophercon-2019.slide#1  GioはGitHubを使っていないため、コントリビュートする手順がメーリングリストでパッチを投げるという普段馴染みのない方法です。 そこで、私がコントリビュートした時の手順も紹介しています。
-golang.tokyoは今回表紙をtottieさんに依頼しました。 tottieさんはGoのスタンプを制作されたり、かわいいGopherの画像をtwitterにアップされてるデザイナーの方です。 今回作成して頂いた表紙がとても可愛かったので自分でもポスター欲しいなと思いました。 おかげさまで物理本は完全に捌き切ったので、表紙は大事ですね。
-メルカリ技術書典部 私が所属しているメルペイとメルカリのエンジニアで記事を書きました。
-私は先日のMERPAY TECH OPENNESS MONTHの際に投稿した&amp;ldquo;メルペイにおけるお客さま残高の管理手法&amp;rdquo;をブラッシュアップして寄稿しました。
-私が担当しているマイクロサービスがどのような設計になっているかについて解説しています。 お客様の残高を預かるサービスにおいて取引の整合性をどのように担保するかについて、工夫した点を解説しています。 内容的には変わっていませんが、読みづらい文章を修正したり画像を入れ替えたりしました。
-&amp;ldquo;ちょっと手直しするだけでいいから楽勝だよ！&amp;ldquo;と言われたのでほいほいついて行きましたが、結果的に半分くらいは書き直したり、詳しく説明し直した気がします。 そこから更に@mhidaka先生が神編集してくださって、よい文章に改造していただきました。
-反省 私は文章を書くのが苦手で、修正項目の8割ほどは文章の校正に費やされています。 textlintなどを使って機械的にレビューしていますが、細かい接続詞などでまだまだ大量に修正点が見つかります。
-参考資料として次のリンクを紹介してもらったので、次に見直せるように紹介します。
- 技術的な文章を書くための第0歩 ～読者に伝わる書き方～ 技術的な文章を書くための1歩、2歩、3歩  他にも、次の書籍は文章作成の参考になると伺いました。
- 理科系の作文技術 技術者のためのテクニカルライティング入門講座  どちらもKindleで読めます。気になった方はぜひ読んでみてください。</description>
+			<description>技術書典7に参加してきました。 私は今回&amp;rdquo;かまてん&amp;ldquo;というサークルでGoのテストについての本を頒布しました。 他にも golang.tokyo メ</description>
 			<content type="html"><![CDATA[<p><a href="https://techbookfest.org/event/tbf07">技術書典7</a>に参加してきました。
 私は今回&rdquo;<a href="https://techbookfest.org/event/tbf07/circle/5741270278340608">かまてん</a>&ldquo;というサークルでGoのテストについての本を頒布しました。</p>
 <p>他にも</p>
@@ -228,18 +189,7 @@ textlintなどを使って機械的にレビューしていますが、細かい
 			<pubDate>Sat, 14 Sep 2019 01:01:53 +0900</pubDate>
 			
 			<guid>https://knsh14.github.io/posts/how-to-automate-deploying-hugo/</guid>
-			<description>HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。
-自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。
-せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。
-なので、GitHub Actionsを使って作ってみることにしました。
-事前準備  記事を書く用のリポジトリ デプロイ先のリポジトリ GitHubのPersonal Access Token  repoの操作が可能な権限を付ける必要があります    記事を書く用のリポジトリはPrivateでも構いません。
-デプロイ先のリポジトリはUSERNAME.github.ioという名前にする必要があります
-記事のリポジトリにトークンを設定する 記事を書く用のリポジトリに事前準備で作成したPersonal Access Tokenを設定します。
-リポジトリのSettings -&amp;gt; Secretsを開き、「Add a new secret」を押して、Nameを「MY_GITHUB_ACCESS_TOKEN」Valueに先程のトークンを設定します。 この設定を入れないと、別のリポジトリにアクセスする権限を持てないので必ず設定する必要があります。
-詳しいドキュメントは本家のドキュメントを参照してください。
-記事のリポジトリにworkflowを設定する 記事のリポジトリのルートに移動して、.github/workflowsディレクトリを作成します。
-その中に次のようなワークフローを定義します。
-name: Go on: push: branches: - master jobs: build: name: Build runs-on: ubuntu-latest steps: - name: Set up Go 1.12 uses: actions/setup-go@v1 with: go-version: 1.12 id: go - name: Check out code into the Go module directory uses: actions/checkout@v1 - name: install hugo run: | go get -u github.</description>
+			<description>HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。 自分も最近ブログを書こうと思い立ってHugoで</description>
 			<content type="html"><![CDATA[<p>HugoとGitHub Pagesを利用してブログや自分のページをデプロイしてる方は大勢います。<br>
 自分も最近ブログを書こうと思い立ってHugoでブログを作ろうと考えました。<br>
 せっかくなのでブログを書いてPRを投げてmasterにマージされたら自動で静的ファイルを作成して公開する仕組みが欲しくなりました。<br>
@@ -264,52 +214,52 @@ name: Go on: push: branches: - master jobs: build: name: Build runs-on: ubuntu-l
 <h1 id="記事のリポジトリにworkflowを設定する">記事のリポジトリにworkflowを設定する</h1>
 <p>記事のリポジトリのルートに移動して、<code>.github/workflows</code>ディレクトリを作成します。<br>
 その中に次のようなワークフローを定義します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: Go
-<span style="color:#66d9ef">on</span>:
-  <span style="color:#66d9ef">push</span>:
-    <span style="color:#66d9ef">branches</span>:
-    - master
-<span style="color:#66d9ef">jobs</span>:
-
-  <span style="color:#66d9ef">build</span>:
-    <span style="color:#66d9ef">name</span>: Build
-    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
-    <span style="color:#66d9ef">steps</span>:
-
-    - <span style="color:#66d9ef">name</span>: Set up Go <span style="color:#ae81ff">1.12</span>
-      <span style="color:#66d9ef">uses</span>: actions/setup-go@v1
-      <span style="color:#66d9ef">with</span>:
-        <span style="color:#66d9ef">go-version</span>: <span style="color:#ae81ff">1.12</span>
-      <span style="color:#66d9ef">id</span>: go
-
-    - <span style="color:#66d9ef">name</span>: Check out code into the Go module directory
-      <span style="color:#66d9ef">uses</span>: actions/checkout@v1
-
-    - <span style="color:#66d9ef">name</span>: install hugo
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">        go get -u github.com/gohugoio/hugo</span>
-
-    - <span style="color:#66d9ef">name</span>: setup public repo
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">          git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public</span>
-
-    - <span style="color:#66d9ef">name</span>: Build
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">        export PATH=$PATH:`go env GOPATH`/bin</span>
-        git submodule init
-        git submodule update
-        hugo
-
-    - <span style="color:#66d9ef">name</span>: Push
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">        export MSG=`git log --format=%B -n 1 HEAD`</span>
-        cd public
-        git config --local user.name <span style="color:#e6db74">&#34;NAME&#34;</span>
-        git config --local user.email <span style="color:#e6db74">&#34;EMAIL@gmail.com&#34;</span>
-        git add .
-        git commit -m <span style="color:#e6db74">&#34;${MSG}&#34;</span>
-        git push origin master
-</code></pre></div><p>Goをベースにしたワークフローを利用します。
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">name</span><span class="p">:</span><span class="w"> </span>Go<span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">push</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">branches</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- master<span class="w">
+</span><span class="w"></span><span class="k">jobs</span><span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="k">build</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>Build<span class="w">
+</span><span class="w">    </span><span class="k">runs-on</span><span class="p">:</span><span class="w"> </span>ubuntu-latest<span class="w">
+</span><span class="w">    </span><span class="k">steps</span><span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Set<span class="w"> </span>up<span class="w"> </span>Go<span class="w"> </span><span class="m">1.12</span><span class="w">
+</span><span class="w">      </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/setup-go@v1<span class="w">
+</span><span class="w">      </span><span class="k">with</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="k">go-version</span><span class="p">:</span><span class="w"> </span><span class="m">1.12</span><span class="w">
+</span><span class="w">      </span><span class="k">id</span><span class="p">:</span><span class="w"> </span>go<span class="w">
+</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Check<span class="w"> </span>out<span class="w"> </span>code<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>Go<span class="w"> </span>module<span class="w"> </span>directory<span class="w">
+</span><span class="w">      </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/checkout@v1<span class="w">
+</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>install<span class="w"> </span>hugo<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">        go get -u github.com/gohugoio/hugo</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>setup<span class="w"> </span>public<span class="w"> </span>repo<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">          git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Build<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">        export PATH=$PATH:`go env GOPATH`/bin</span><span class="w">
+</span><span class="w">        </span>git<span class="w"> </span>submodule<span class="w"> </span>init<span class="w">
+</span><span class="w">        </span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w">
+</span><span class="w">        </span>hugo<span class="w">
+</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Push<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">        export MSG=`git log --format=%B -n 1 HEAD`</span><span class="w">
+</span><span class="w">        </span>cd<span class="w"> </span>public<span class="w">
+</span><span class="w">        </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&#34;NAME&#34;</span><span class="w">
+</span><span class="w">        </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&#34;EMAIL@gmail.com&#34;</span><span class="w">
+</span><span class="w">        </span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w">
+</span><span class="w">        </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&#34;${MSG}&#34;</span><span class="w">
+</span><span class="w">        </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master<span class="w">
+</span></code></pre></div><p>Goをベースにしたワークフローを利用します。
 setup public repoのステージでHugoをビルドした結果の静的ファイルが吐き出されるディレクトリを公開用のリポジトリで管理できるようにします。<br>
 Buildステージで環境変数のPATHにGoのバイナリのある場所も追加してHugoコマンドが使えるようにします。<br>
 Pushステージで記事用のリポジトリのコミットメッセージを取得して公開用のリポジトリのコミットメッセージにします。<br>

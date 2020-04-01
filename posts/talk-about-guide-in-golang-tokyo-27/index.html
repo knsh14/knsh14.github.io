@@ -8,55 +8,22 @@
 	<meta name="theme-color" content="#494f5c">
 	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました">
-<meta itemprop="description" content="11月5日に行われたgolang.tokyo#27で「uber-go/guide の解説」というタイトルで発表しました。
-資料はこちらです。
-内容 uber-go/guideというUberがまとめたコードレビューに関するドキュメントがあります。
-これを自分が日本語に翻訳しました。 このguideから自分の翻訳へのリンクも張ってもらっています。
-このドキュメントを翻訳した際、どのように翻訳したのかやそもそもなぜ翻訳をやろうと思ったのかなどを説明しました。
-そして、自分が読んでいて特にこれは参考になったなと思ったセクションの一部を取り上げて解説しました。
-最後に自分が最近取り組んでいるuber-go/guideのセクションをチェックしてくれるulinterというlinterについても話しました。
-発表した感想 良かったこと Twitter上では期待してくれる方がいて、良かったというツイートもいただけました。 かなりよいフィードバックがあったので素直にうれしかったです。
-自分は技術的文章を翻訳する際の期間や方法の話はこれまであまり聞いたことがなかったです。 また、自分も発表したことがなかったため、かなり新鮮でした。 この話を聞いてくれた方はどう感じたのか気になります。
-失敗したなと思ったこと ulinterの話をする際に、コードを紹介しながら実装の説明をしました。 AssignStmtやTypeAssertExprなど、GoのASTの話を具体的に話ました。 しかし、会場の方はGoの静的解析について事前知識があまりなさそうな雰囲気を感じました。 いきなりこれらの話を出すのは聞いてくださった方々を置いていってしまったと反省しています。
-発表時間が少し予定時間を超えたのでこれも収まるように配分練習等すべきでした。
-終わりに 前回外部発表したときから1ヵ月以上期間が空いたので緊張しましたがなんとか発表できてよかったです。 聞いてくれた方はこれを機会に英語で書かれたドキュメントも恐れずに読んで見てほしいです。">
+<meta itemprop="description" content="11月5日に行われたgolang.tokyo#27で「uber-go/guide の解説」というタイトルで発表しました。 資料はこちらです。 内容">
 <meta itemprop="datePublished" content="2019-11-06T01:12:03&#43;09:00" />
 <meta itemprop="dateModified" content="2019-11-06T01:12:03&#43;09:00" />
-<meta itemprop="wordCount" content="26">
+<meta itemprop="wordCount" content="836">
 
 
 
 <meta itemprop="keywords" content="" /><meta property="og:title" content="golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました" />
-<meta property="og:description" content="11月5日に行われたgolang.tokyo#27で「uber-go/guide の解説」というタイトルで発表しました。
-資料はこちらです。
-内容 uber-go/guideというUberがまとめたコードレビューに関するドキュメントがあります。
-これを自分が日本語に翻訳しました。 このguideから自分の翻訳へのリンクも張ってもらっています。
-このドキュメントを翻訳した際、どのように翻訳したのかやそもそもなぜ翻訳をやろうと思ったのかなどを説明しました。
-そして、自分が読んでいて特にこれは参考になったなと思ったセクションの一部を取り上げて解説しました。
-最後に自分が最近取り組んでいるuber-go/guideのセクションをチェックしてくれるulinterというlinterについても話しました。
-発表した感想 良かったこと Twitter上では期待してくれる方がいて、良かったというツイートもいただけました。 かなりよいフィードバックがあったので素直にうれしかったです。
-自分は技術的文章を翻訳する際の期間や方法の話はこれまであまり聞いたことがなかったです。 また、自分も発表したことがなかったため、かなり新鮮でした。 この話を聞いてくれた方はどう感じたのか気になります。
-失敗したなと思ったこと ulinterの話をする際に、コードを紹介しながら実装の説明をしました。 AssignStmtやTypeAssertExprなど、GoのASTの話を具体的に話ました。 しかし、会場の方はGoの静的解析について事前知識があまりなさそうな雰囲気を感じました。 いきなりこれらの話を出すのは聞いてくださった方々を置いていってしまったと反省しています。
-発表時間が少し予定時間を超えたのでこれも収まるように配分練習等すべきでした。
-終わりに 前回外部発表したときから1ヵ月以上期間が空いたので緊張しましたがなんとか発表できてよかったです。 聞いてくれた方はこれを機会に英語で書かれたドキュメントも恐れずに読んで見てほしいです。" />
+<meta property="og:description" content="11月5日に行われたgolang.tokyo#27で「uber-go/guide の解説」というタイトルで発表しました。 資料はこちらです。 内容" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://knsh14.github.io/posts/talk-about-guide-in-golang-tokyo-27/" />
 <meta property="article:published_time" content="2019-11-06T01:12:03+09:00" />
 <meta property="article:modified_time" content="2019-11-06T01:12:03+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="golang.tokyo #27 で「uber-go/guide の解説」というタイトルで発表しました"/>
-<meta name="twitter:description" content="11月5日に行われたgolang.tokyo#27で「uber-go/guide の解説」というタイトルで発表しました。
-資料はこちらです。
-内容 uber-go/guideというUberがまとめたコードレビューに関するドキュメントがあります。
-これを自分が日本語に翻訳しました。 このguideから自分の翻訳へのリンクも張ってもらっています。
-このドキュメントを翻訳した際、どのように翻訳したのかやそもそもなぜ翻訳をやろうと思ったのかなどを説明しました。
-そして、自分が読んでいて特にこれは参考になったなと思ったセクションの一部を取り上げて解説しました。
-最後に自分が最近取り組んでいるuber-go/guideのセクションをチェックしてくれるulinterというlinterについても話しました。
-発表した感想 良かったこと Twitter上では期待してくれる方がいて、良かったというツイートもいただけました。 かなりよいフィードバックがあったので素直にうれしかったです。
-自分は技術的文章を翻訳する際の期間や方法の話はこれまであまり聞いたことがなかったです。 また、自分も発表したことがなかったため、かなり新鮮でした。 この話を聞いてくれた方はどう感じたのか気になります。
-失敗したなと思ったこと ulinterの話をする際に、コードを紹介しながら実装の説明をしました。 AssignStmtやTypeAssertExprなど、GoのASTの話を具体的に話ました。 しかし、会場の方はGoの静的解析について事前知識があまりなさそうな雰囲気を感じました。 いきなりこれらの話を出すのは聞いてくださった方々を置いていってしまったと反省しています。
-発表時間が少し予定時間を超えたのでこれも収まるように配分練習等すべきでした。
-終わりに 前回外部発表したときから1ヵ月以上期間が空いたので緊張しましたがなんとか発表できてよかったです。 聞いてくれた方はこれを機会に英語で書かれたドキュメントも恐れずに読んで見てほしいです。"/>
+<meta name="twitter:description" content="11月5日に行われたgolang.tokyo#27で「uber-go/guide の解説」というタイトルで発表しました。 資料はこちらです。 内容"/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -134,7 +101,7 @@ AssignStmtやTypeAssertExprなど、GoのASTの話を具体的に話ました。
 			</div>
 			<hr class="post-end">
 			<footer class="post-info">
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>26 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>836 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-11-05 16:12 &#43;0000</p>
 			</footer>
 		</article>

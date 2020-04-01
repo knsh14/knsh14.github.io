@@ -17,13 +17,7 @@
       <pubDate>Sun, 29 Mar 2020 18:23:14 +0900</pubDate>
       
       <guid>https://knsh14.github.io/translations/go-codereview-comments/</guid>
-      <description>原文
-go fmt あなたのコードに gofmt を走らせると、自動的に機械的に直すことのできるスタイルの大部分を修正してくれます。 世にあるGoのコードのほとんどすべてが gofmt を使っています。 この文章の残りは機械的に直すことのできないポイントについて解説します。
-代わりに goimports を使う手段もあります。 gofmt に加えて必要に応じてimport内に空行をつけたり消したりする機能があります。
-Comment Sentences http://golang.org/doc/effective_go.html#commentary を読みましょう。 func や struct などのドキュメントのためのコメントは多少冗長であっても完全な文章でなくてはいけません。 このアプローチは godoc ドキュメントにするときにより効果を発揮します。 コメントは以下の例のように対象の名前で始まって、ピリオドで終わらなければいけません。
-// Request represents a request to run a command. type Request struct { ... // Encode writes the JSON encoding of req to w. func Encode(w io.Writer, req *Request) { ... また、コメントが正しい文章の終わりの印であるピリオドで終わらない場合に注意してください。 github.com/mailru/easyjson や github.com/golang/lint など多くのツールで型やメソッドの情報をマークするためにコメントを使っています。
-Declaring Empty Slices スライスの宣言の時は
-var t []string のほうが</description>
+      <description>原文 go fmt あなたのコードに gofmt を走らせると、自動的に機械的に直すことのできるスタイルの大部分を修正してくれます。 世にあるGoのコードのほとんどす</description>
     </item>
     
   </channel>

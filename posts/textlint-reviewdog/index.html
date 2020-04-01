@@ -8,49 +8,22 @@
 	<meta name="theme-color" content="#494f5c">
 	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="reviewdogとGitHub Actionsでtextlintチェックをする">
-<meta itemprop="description" content="この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。
-モチベーション 技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。
-私は文章力を向上させるためにこのブログを更新しています。 そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。 TechBoosterが公開しているRe:VIEW TemplateではCircleCIを利用してPull Requestにコメントを付けています。 しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。 そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。
-口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。
-textlintのインストール 初めにnpmをインストールします。 私はnodebrewを利用してインストールしました。
-次にnpm initコマンドでモジュールを定義します。 このコマンドを実行して質問に答えていくとpackage.jsonが作成されます。
-npm installコマンドでtextlintとtextlintのためのプラグインなどをインストールします。
-npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh .textlintrc や設定ファイルなどはReVIEW-Templateから持ってきます。 この設定ファイルを使うことで技術書典と同じレベルでチェックできます。
-workflowの設定 リポジトリのルートに .github/workflow ディレクトリを作成します。 このディレクトリに textlint.yaml を作成し、次のワークフローを設定します。
-name: textlint on: pull_request: branches: - master jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 - name: Use Node.js uses: actions/setup-node@v1 with: node-version: 12.x - name: npm install run: | npm install - name: install reviewdog run: | curl -sfL https://raw.">
+<meta itemprop="description" content="この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。 モチベーション 技術書典の">
 <meta itemprop="datePublished" content="2019-09-27T12:30:29&#43;09:00" />
 <meta itemprop="dateModified" content="2019-09-27T12:30:29&#43;09:00" />
-<meta itemprop="wordCount" content="110">
+<meta itemprop="wordCount" content="900">
 
 
 
 <meta itemprop="keywords" content="" /><meta property="og:title" content="reviewdogとGitHub Actionsでtextlintチェックをする" />
-<meta property="og:description" content="この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。
-モチベーション 技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。
-私は文章力を向上させるためにこのブログを更新しています。 そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。 TechBoosterが公開しているRe:VIEW TemplateではCircleCIを利用してPull Requestにコメントを付けています。 しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。 そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。
-口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。
-textlintのインストール 初めにnpmをインストールします。 私はnodebrewを利用してインストールしました。
-次にnpm initコマンドでモジュールを定義します。 このコマンドを実行して質問に答えていくとpackage.jsonが作成されます。
-npm installコマンドでtextlintとtextlintのためのプラグインなどをインストールします。
-npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh .textlintrc や設定ファイルなどはReVIEW-Templateから持ってきます。 この設定ファイルを使うことで技術書典と同じレベルでチェックできます。
-workflowの設定 リポジトリのルートに .github/workflow ディレクトリを作成します。 このディレクトリに textlint.yaml を作成し、次のワークフローを設定します。
-name: textlint on: pull_request: branches: - master jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 - name: Use Node.js uses: actions/setup-node@v1 with: node-version: 12.x - name: npm install run: | npm install - name: install reviewdog run: | curl -sfL https://raw." />
+<meta property="og:description" content="この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。 モチベーション 技術書典の" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://knsh14.github.io/posts/textlint-reviewdog/" />
 <meta property="article:published_time" content="2019-09-27T12:30:29+09:00" />
 <meta property="article:modified_time" content="2019-09-27T12:30:29+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="reviewdogとGitHub Actionsでtextlintチェックをする"/>
-<meta name="twitter:description" content="この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。
-モチベーション 技術書典のRe:Viewで書籍を書くためのサンプルリポジトリでは、textlintとreviewdogによって誤字や、不適切な表現をチェックしています。
-私は文章力を向上させるためにこのブログを更新しています。 そのため、技術書典と同等のレベルで内容のチェックをすることは非常によい訓練になります。 TechBoosterが公開しているRe:VIEW TemplateではCircleCIを利用してPull Requestにコメントを付けています。 しかし私はこのブログをデプロイするためにGitHub Actionsを利用しています。 そこでtextlintのチェックもGitHub Actionsで行えるように設定しました。
-口語に近い文章を書いてしまってもすり抜けてしまう箇所もあるため、完璧ではありません。
-textlintのインストール 初めにnpmをインストールします。 私はnodebrewを利用してインストールしました。
-次にnpm initコマンドでモジュールを定義します。 このコマンドを実行して質問に答えていくとpackage.jsonが作成されます。
-npm installコマンドでtextlintとtextlintのためのプラグインなどをインストールします。
-npm install textlint textlint-filter-rule-comments textlint-filter-rule-whitelist textlint-plugin-review textlint-rule-max-ten textlint-rule-preset-ja-technical-writing textlint-rule-preset-japanese textlint-rule-prh .textlintrc や設定ファイルなどはReVIEW-Templateから持ってきます。 この設定ファイルを使うことで技術書典と同じレベルでチェックできます。
-workflowの設定 リポジトリのルートに .github/workflow ディレクトリを作成します。 このディレクトリに textlint.yaml を作成し、次のワークフローを設定します。
-name: textlint on: pull_request: branches: - master jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v1 - name: Use Node.js uses: actions/setup-node@v1 with: node-version: 12.x - name: npm install run: | npm install - name: install reviewdog run: | curl -sfL https://raw."/>
+<meta name="twitter:description" content="この記事ではreviewdogとtextlintを組み合わせてGitHub Actionsで利用する方法を説明します。 モチベーション 技術書典の"/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -120,40 +93,40 @@ TechBoosterが公開している<a href="https://github.com/TechBooster/ReVIEW-T
 <h1 id="workflowの設定">workflowの設定<a href="#workflowの設定" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <p>リポジトリのルートに <code>.github/workflow</code> ディレクトリを作成します。
 このディレクトリに <code>textlint.yaml</code> を作成し、次のワークフローを設定します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: textlint
-
-<span style="color:#66d9ef">on</span>:
-  <span style="color:#66d9ef">pull_request</span>:
-    <span style="color:#66d9ef">branches</span>:
-    - master
-
-<span style="color:#66d9ef">jobs</span>:
-  <span style="color:#66d9ef">build</span>:
-    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
-    <span style="color:#66d9ef">steps</span>:
-    - <span style="color:#66d9ef">uses</span>: actions/checkout@v1
-    - <span style="color:#66d9ef">name</span>: Use Node.js
-      <span style="color:#66d9ef">uses</span>: actions/setup-node@v1
-      <span style="color:#66d9ef">with</span>:
-        <span style="color:#66d9ef">node-version</span>: <span style="color:#ae81ff">12.</span>x
-    - <span style="color:#66d9ef">name</span>: npm install
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">        npm install</span>
-    - <span style="color:#66d9ef">name</span>: install reviewdog
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13</span>
-    - <span style="color:#66d9ef">name</span>: lint
-      <span style="color:#66d9ef">env</span>:
-        <span style="color:#66d9ef">REVIEWDOG_GITHUB_API_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
-      <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review</span>
-</code></pre></div><p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">name</span><span class="p">:</span><span class="w"> </span>textlint<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">pull_request</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">branches</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- master<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">jobs</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">build</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">runs-on</span><span class="p">:</span><span class="w"> </span>ubuntu-latest<span class="w">
+</span><span class="w">    </span><span class="k">steps</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/checkout@v1<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Use<span class="w"> </span>Node.js<span class="w">
+</span><span class="w">      </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/setup-node@v1<span class="w">
+</span><span class="w">      </span><span class="k">with</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="k">node-version</span><span class="p">:</span><span class="w"> </span><span class="m">12.</span>x<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">        npm install</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>install<span class="w"> </span>reviewdog<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>lint<span class="w">
+</span><span class="w">      </span><span class="k">env</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="k">REVIEWDOG_GITHUB_API_TOKEN</span><span class="p">:</span><span class="w"> </span>${{<span class="w"> </span>secrets.GITHUB_TOKEN<span class="w"> </span>}}<span class="w">
+</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review</span><span class="w">
+</span></code></pre></div><p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
 <code>npm install</code>を毎回キャッシュを使わずにインストールしていますが、現時点で実行時間が30秒程度なのであまり問題になっていません。</p>
 
 			</div>
 			<hr class="post-end">
 			<footer class="post-info">
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>110 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>900 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-09-27 03:30 &#43;0000</p>
 			</footer>
 		</article>
