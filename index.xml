@@ -26,7 +26,7 @@
       <pubDate>Sun, 29 Mar 2020 18:23:14 +0900</pubDate>
       
       <guid>https://knsh14.github.io/translations/go-codereview-comments/</guid>
-      <description>原文 go fmt あなたのコードに gofmt を走らせると、自動的に機械的に直すことのできるスタイルの大部分を修正してくれます。 世にあるGoのコードのほとんどす</description>
+      <description>原文 目次 go fmt Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&amp;rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコード</description>
     </item>
     
     <item>
