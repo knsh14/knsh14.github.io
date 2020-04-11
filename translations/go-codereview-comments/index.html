@@ -11,7 +11,7 @@
 <meta itemprop="description" content="原文 目次 go fmt Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコード">
 <meta itemprop="datePublished" content="2020-03-29T18:23:14&#43;09:00" />
 <meta itemprop="dateModified" content="2020-03-29T18:23:14&#43;09:00" />
-<meta itemprop="wordCount" content="8836">
+<meta itemprop="wordCount" content="8821">
 
 
 
@@ -164,10 +164,10 @@ Contextを渡す普通の方法は <code>context.Background()</code> を直接�
 </code></pre></div><p>よりも</p>
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">t</span> <span class="p">[]</span><span class="kt">string</span>
 </code></pre></div><p>を使うようにしましょう。</p>
-<p>前者は nil のスライスを宣言しますが、後者は nil ではなく長さ0のものになります。</p>
-<p>JSON オブジェクトをエンコードする際など、限られた状況で nil ではなく長さ0のスライスのほうが好まれる状況があることに注目してください。
+<p>前者は長さ0のスライスを生成しますが、後者は nil のスライスを宣言します。</p>
+<p>JSON オブジェクトをエンコードする際など、限られた状況で nil ではなく長さ0のスライスのほうが好まれる状況があります。
 <code>nil</code> スライスは <code>null</code> に変換されますが、<code>[]string{}</code> は <code>[]</code> に変換されます。</p>
-<p>インターフェースを設計するときは、nil のスライスと長さ0のスライスを区別しないようにしましょう。なぜなら微妙なプログラミングミスを引き起こすことがあるからです。</p>
+<p>インターフェースを設計するときは、nil のスライスと長さ0のスライスを区別しないようにしましょう。なぜなら分かりづらいミスを引き起こすことがあるからです。</p>
 <p>より詳しい議論は Francesc Campoy の <a href="https://www.youtube.com/watch?v=ynoY2xz-F8s">Understanding Nil という発表</a>を参照してください</p>
 <h1 id="doc-comments">Doc Comments<a href="#doc-comments" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <p>全ての最上位にあったり外部に公開されているものは、docコメントがなければいけません。
