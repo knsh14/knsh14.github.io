@@ -71,33 +71,33 @@ TechBoosterが公開している<a href="https://github.com/TechBooster/ReVIEW-T
 <h1 id="workflowの設定">workflowの設定</h1>
 <p>リポジトリのルートに <code>.github/workflow</code> ディレクトリを作成します。
 このディレクトリに <code>textlint.yaml</code> を作成し、次のワークフローを設定します。</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">name</span><span class="p">:</span><span class="w"> </span>textlint<span class="w">
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">textlint</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="k">on</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">pull_request</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">branches</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- master<span class="w">
+</span><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="l">master</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="k">jobs</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">build</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">runs-on</span><span class="p">:</span><span class="w"> </span>ubuntu-latest<span class="w">
-</span><span class="w">    </span><span class="k">steps</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/checkout@v1<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Use<span class="w"> </span>Node.js<span class="w">
-</span><span class="w">      </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/setup-node@v1<span class="w">
-</span><span class="w">      </span><span class="k">with</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">node-version</span><span class="p">:</span><span class="w"> </span><span class="m">12.</span>x<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w">
-</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">        npm install</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>install<span class="w"> </span>reviewdog<span class="w">
-</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>lint<span class="w">
-</span><span class="w">      </span><span class="k">env</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">REVIEWDOG_GITHUB_API_TOKEN</span><span class="p">:</span><span class="w"> </span>${{<span class="w"> </span>secrets.GITHUB_TOKEN<span class="w"> </span>}}<span class="w">
-</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review</span><span class="w">
+</span><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v1</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Use Node.js</span><span class="w">
+</span><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/setup-node@v1</span><span class="w">
+</span><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="m">12.</span><span class="l">x</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">npm install</span><span class="w">
+</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">        npm install
+</span><span class="sd">    - name: install reviewdog
+</span><span class="sd">      run: |
+</span><span class="sd">          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13
+</span><span class="sd">    - name: lint
+</span><span class="sd">      env:
+</span><span class="sd">        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+</span><span class="sd">      run: |
+</span><span class="sd">          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review
 </span></code></pre></div><p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
 <code>npm install</code>を毎回キャッシュを使わずにインストールしていますが、現時点で実行時間が30秒程度なのであまり問題になっていません。</p>
 ]]></content>
@@ -109,9 +109,9 @@ TechBoosterが公開している<a href="https://github.com/TechBooster/ReVIEW-T
 			<pubDate>Tue, 24 Sep 2019 19:36:24 +0900</pubDate>
 			
 			<guid>https://knsh14.github.io/posts/techbookfest-7/</guid>
-			<description>技術書典7に参加してきました。 私は今回&amp;rdquo;かまてん&amp;ldquo;というサークルでGoのテストについての本を頒布しました。 他にも golang.tokyo メ</description>
+			<description>技術書典7に参加してきました。 私は今回&amp;quot;かまてん&amp;ldquo;というサークルでGoのテストについての本を頒布しました。 他にも golang.tokyo メル</description>
 			<content type="html"><![CDATA[<p><a href="https://techbookfest.org/event/tbf07">技術書典7</a>に参加してきました。
-私は今回&rdquo;<a href="https://techbookfest.org/event/tbf07/circle/5741270278340608">かまてん</a>&ldquo;というサークルでGoのテストについての本を頒布しました。</p>
+私は今回&quot;<a href="https://techbookfest.org/event/tbf07/circle/5741270278340608">かまてん</a>&ldquo;というサークルでGoのテストについての本を頒布しました。</p>
 <p>他にも</p>
 <ul>
 <li><a href="https://techbookfest.org/event/tbf07/circle/5174941137764352">golang.tokyo</a></li>
@@ -214,51 +214,51 @@ textlintなどを使って機械的にレビューしていますが、細かい
 <h1 id="記事のリポジトリにworkflowを設定する">記事のリポジトリにworkflowを設定する</h1>
 <p>記事のリポジトリのルートに移動して、<code>.github/workflows</code>ディレクトリを作成します。<br>
 その中に次のようなワークフローを定義します。</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">name</span><span class="p">:</span><span class="w"> </span>Go<span class="w">
-</span><span class="w"></span><span class="k">on</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">push</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">branches</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- master<span class="w">
-</span><span class="w"></span><span class="k">jobs</span><span class="p">:</span><span class="w">
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Go</span><span class="w">
+</span><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="l">master</span><span class="w">
+</span><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
 </span><span class="w">
-</span><span class="w">  </span><span class="k">build</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>Build<span class="w">
-</span><span class="w">    </span><span class="k">runs-on</span><span class="p">:</span><span class="w"> </span>ubuntu-latest<span class="w">
-</span><span class="w">    </span><span class="k">steps</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build</span><span class="w">
+</span><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
 </span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Set<span class="w"> </span>up<span class="w"> </span>Go<span class="w"> </span><span class="m">1.12</span><span class="w">
-</span><span class="w">      </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/setup-go@v1<span class="w">
-</span><span class="w">      </span><span class="k">with</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">go-version</span><span class="p">:</span><span class="w"> </span><span class="m">1.12</span><span class="w">
-</span><span class="w">      </span><span class="k">id</span><span class="p">:</span><span class="w"> </span>go<span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Go 1.12</span><span class="w">
+</span><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/setup-go@v1</span><span class="w">
+</span><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">go-version</span><span class="p">:</span><span class="w"> </span><span class="m">1.12</span><span class="w">
+</span><span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">go</span><span class="w">
 </span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Check<span class="w"> </span>out<span class="w"> </span>code<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>Go<span class="w"> </span>module<span class="w"> </span>directory<span class="w">
-</span><span class="w">      </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/checkout@v1<span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Check out code into the Go module directory</span><span class="w">
+</span><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v1</span><span class="w">
 </span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>install<span class="w"> </span>hugo<span class="w">
-</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">        go get -u github.com/gohugoio/hugo</span><span class="w">
-</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>setup<span class="w"> </span>public<span class="w"> </span>repo<span class="w">
-</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">          git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public</span><span class="w">
-</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Build<span class="w">
-</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">        export PATH=$PATH:`go env GOPATH`/bin</span><span class="w">
-</span><span class="w">        </span>git<span class="w"> </span>submodule<span class="w"> </span>init<span class="w">
-</span><span class="w">        </span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w">
-</span><span class="w">        </span>hugo<span class="w">
-</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Push<span class="w">
-</span><span class="w">      </span><span class="k">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">        export MSG=`git log --format=%B -n 1 HEAD`</span><span class="w">
-</span><span class="w">        </span>cd<span class="w"> </span>public<span class="w">
-</span><span class="w">        </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&#34;NAME&#34;</span><span class="w">
-</span><span class="w">        </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&#34;EMAIL@gmail.com&#34;</span><span class="w">
-</span><span class="w">        </span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w">
-</span><span class="w">        </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&#34;${MSG}&#34;</span><span class="w">
-</span><span class="w">        </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master<span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">install hugo</span><span class="w">
+</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">        go get -u github.com/gohugoio/hugo
+</span><span class="sd">
+</span><span class="sd">    - name: setup public repo
+</span><span class="sd">      run: |
+</span><span class="sd">          git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public
+</span><span class="sd">
+</span><span class="sd">    - name: Build
+</span><span class="sd">      run: |
+</span><span class="sd">        export PATH=$PATH:`go env GOPATH`/bin
+</span><span class="sd">        git submodule init
+</span><span class="sd">        git submodule update
+</span><span class="sd">        hugo
+</span><span class="sd">
+</span><span class="sd">    - name: Push
+</span><span class="sd">      run: |
+</span><span class="sd">        export MSG=`git log --format=%B -n 1 HEAD`
+</span><span class="sd">        cd public
+</span><span class="sd">        git config --local user.name &#34;NAME&#34;
+</span><span class="sd">        git config --local user.email &#34;EMAIL@gmail.com&#34;
+</span><span class="sd">        git add .
+</span><span class="sd">        git commit -m &#34;${MSG}&#34;
+</span><span class="sd">        git push origin master
 </span></code></pre></div><p>Goをベースにしたワークフローを利用します。
 setup public repoのステージでHugoをビルドした結果の静的ファイルが吐き出されるディレクトリを公開用のリポジトリで管理できるようにします。<br>
 Buildステージで環境変数のPATHにGoのバイナリのある場所も追加してHugoコマンドが使えるようにします。<br>

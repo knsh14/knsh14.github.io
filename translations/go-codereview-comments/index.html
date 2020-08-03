@@ -9,13 +9,14 @@
 	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="Go Codereview Comments">
 <meta itemprop="description" content="原文 目次 go fmt Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコード">
-<meta itemprop="datePublished" content="2020-03-29T18:23:14&#43;09:00" />
-<meta itemprop="dateModified" content="2020-03-29T18:23:14&#43;09:00" />
+<meta itemprop="datePublished" content="2020-03-29T18:23:14+09:00" />
+<meta itemprop="dateModified" content="2020-03-29T18:23:14+09:00" />
 <meta itemprop="wordCount" content="8821">
 
 
 
-<meta itemprop="keywords" content="" /><meta property="og:title" content="Go Codereview Comments" />
+<meta itemprop="keywords" content="" />
+<meta property="og:title" content="Go Codereview Comments" />
 <meta property="og:description" content="原文 目次 go fmt Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコード" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://knsh14.github.io/translations/go-codereview-comments/" />
@@ -257,7 +258,7 @@ Quuxのような名前が今のパッケージの識別子なのかインポー�
 <span class="p">}</span>
 <span class="k">return</span> <span class="nf">Parse</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
 </code></pre></div><p>この方法は外向けの func だけではなく、内部で使われているものにも適用できます。</p>
-<p>nil, &ldquo;&quot;, 0, や -1 のような値を返すことは、その値が正しいときや、他の値と別に処理する必要が無い場合は良い選択肢です。</p>
+<p>nil, &ldquo;&rdquo;, 0, や -1 のような値を返すことは、その値が正しいときや、他の値と別に処理する必要が無い場合は良い選択肢です。</p>
 <p>strings などいくつかの標準ライブラリでは in-band エラーを返すことがあります。
 これによって文字列を操作するためのコードが大幅に削減され、プログラマが真面目に処理する必要が無いようにしています。
 一般的には Go のコードはエラーのための値を返すべきです。</p>
