@@ -8,23 +8,23 @@
 	<meta name="theme-color" content="#494f5c">
 	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="Go Codereview Comments">
-<meta itemprop="description" content="原文 目次 go fmt Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコード">
+<meta itemprop="description" content="原文 目次 go fmt Comment Sentences Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコ">
 <meta itemprop="datePublished" content="2020-03-29T18:23:14+09:00" />
 <meta itemprop="dateModified" content="2020-03-29T18:23:14+09:00" />
-<meta itemprop="wordCount" content="8821">
+<meta itemprop="wordCount" content="8818">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta property="og:title" content="Go Codereview Comments" />
-<meta property="og:description" content="原文 目次 go fmt Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコード" />
+<meta property="og:description" content="原文 目次 go fmt Comment Sentences Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコ" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://knsh14.github.io/translations/go-codereview-comments/" />
 <meta property="article:published_time" content="2020-03-29T18:23:14+09:00" />
 <meta property="article:modified_time" content="2020-03-29T18:23:14+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go Codereview Comments"/>
-<meta name="twitter:description" content="原文 目次 go fmt Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコード"/>
+<meta name="twitter:description" content="原文 目次 go fmt Comment Sentences Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコ"/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -73,6 +73,7 @@
 <h1 id="目次">目次<a href="#目次" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <ul>
 <li><a href="#go-fmt">go fmt</a></li>
+<li><a href="#comment-sentences">Comment Sentences</a></li>
 <li><a href="#contexts">Contexts</a></li>
 <li><a href="#copying">Copying</a></li>
 <li><a href="#crypt-rand">Crypt Rand</a></li>
@@ -127,7 +128,7 @@ Go のプログラムは受け取った RPC や HTTP リクエストから、返
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">F</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="cm">/* other arguments */</span><span class="p">)</span> <span class="p">{}</span>
 </code></pre></div><p><code>context.Background()</code> を使ってリクエスト固有に関する処理をせず、いらないと思っていてもコンテキストを渡しておきましょう。
 Contextを渡す普通の方法は <code>context.Background()</code> を直接呼び出す方法だけです。</p>
-<p>Contextを構造体のメンバーに含めては行けません。替わりにすべてのメソッドに引数として渡してください。
+<p>Contextを構造体のメンバーに含めてはいけません。替わりにすべてのメソッドに引数として渡してください。
 唯一の例外はライブラリのシグネチャと一致させなければならない時のみです。</p>
 <p>カスタムのコンテキスト型を作成したり、関数の引数に取ったコンテキスト以外のインターフェースを使用しないでください。</p>
 <p>もしアプリケーションのデータを引き回したい場合には、パラメータやレシーバ、もしくはグローバル変数にしましょう。
@@ -238,7 +239,7 @@ goroutine を無駄に長く残しておくと、予想しないメモリの使�
 このケースを除いて、<code>import .</code> をあなたのプログラムで使うべきではありません。
 Quuxのような名前が今のパッケージの識別子なのかインポートされたものなのかが非常にわかりにくくなって、可読性が極端に落ちるからです。</p>
 <h1 id="in-band-errors">In-Band Errors<a href="#in-band-errors" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
-<p>C言語や似たようなものの場合、 -1 や null を返すことでエラーや結果を発見できなかったことを表現するのは一般的に行われている方法です。</p>
+<p>C言語などでは、一般的なテクニックとして -1 や null を返すことでエラーや結果を発見できなかったことを表現する場合があります。</p>
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Lookup returns the value for key or &#34;&#34; if there is no mapping for key.
 </span><span class="c1"></span><span class="kd">func</span> <span class="nf">Lookup</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span>
 
@@ -304,7 +305,7 @@ Quuxのような名前が今のパッケージの識別子なのかインポー�
 パッケージを実装する際には(ポインタや構造体のような)具体的な型を返さなければいけません。
 この方法だと使う側の修正なしに、新しいメソッドを追加することができます。</p>
 <p>モックのためにAPIの実装側にインターフェースを定義してはいけません。替わりに実際に実装された公開APIからテストできるようなAPIを設計しましょう。</p>
-<p>使われる前にインターフェースを定義しては行けません。現実的な使い方のサンプルがなければ、そのどんなメソッドを含めるかはもちろん、そのインターフェースが必要かどうかわかりません。</p>
+<p>使われる前にインターフェースを定義してはいけません。現実的な使い方のサンプルがなければ、そのどんなメソッドを含めるかはもちろん、そのインターフェースが必要かどうかわかりません。</p>
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">consumer</span>  <span class="c1">// consumer.go
 </span><span class="c1"></span>
 <span class="kd">type</span> <span class="nx">Thinger</span> <span class="kd">interface</span> <span class="p">{</span> <span class="nf">Thing</span><span class="p">()</span> <span class="kt">bool</span> <span class="p">}</span>
@@ -335,7 +336,7 @@ Quuxのような名前が今のパッケージの識別子なのかインポー�
 </code></pre></div><h1 id="line-length">Line Length<a href="#line-length" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <p>Goでは1行の長さを決めてはいませんが、長過ぎないようにしてください。
 同じように繰り返しが多い時など、1行を短く保ちたいがために無理に改行を入れる必要はないでしょう。</p>
-<p>人が不自然な位置で改行を挟む時(多かれ少なかれ例外はありますが、関数呼び出しや関数宣言の中頃です)、適切な数の引数と、適切に短い変数名になっていれば、改行は不要なはずです。
+<p>人が不自然な位置で改行を挟む時(多かれ少なかれ例外はありますが、関数呼び出しや関数宣言の中頃です)、適切な数の引数と適切に短い変数名になっていれば、改行は不要なはずです。
 長い行は長い名前によって出来上がりますし、長い名前を取り除くことは多くの手助けになります。</p>
 <p>言い換えると、行の長さで改行するのではなく、行の意味によって改行するべきです。
 もし長過ぎる行を見つけたときは、名前や処理の流れを改善してみるとより良い結果になるはずです。</p>
@@ -395,7 +396,7 @@ APIが冗長になる上に、実装の簡潔さも失われます。</p>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Seedgen ..
 </span><span class="c1"></span><span class="kn">package</span> <span class="nx">main</span>
 </code></pre></div><p>これらは例であり、状況によって変化しても大丈夫です。</p>
-<p>ですがこれらのコメントは公開されるものなので、正しい英語で書かなければ行けません。先頭の文字を小文字で始めたりすることはできません。
+<p>ですがこれらのコメントは公開されるものなので、正しい英語で書かなければいけません。先頭の文字を小文字で始めたりすることはできません。
 バイナリ名が最初の単語に来た場合、コマンドライン実行時と異なったとしても大文字で書きましょう。</p>
 <p><a href="http://golang.org/doc/effective_go.html#commentary">http://golang.org/doc/effective_go.html#commentary</a> を読むとより詳細なコメントに関するアドバイスがあります。</p>
 <h1 id="package-names">Package Names<a href="#package-names" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>

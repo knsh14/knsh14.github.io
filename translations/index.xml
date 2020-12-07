@@ -6,18 +6,14 @@
     <description>Recent content in Translations on knsh14</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-ja</language>
-    <lastBuildDate>Sun, 29 Mar 2020 18:23:14 +0900</lastBuildDate>
-    
-	<atom:link href="https://knsh14.github.io/translations/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 29 Mar 2020 18:23:14 +0900</lastBuildDate><atom:link href="https://knsh14.github.io/translations/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go Codereview Comments</title>
       <link>https://knsh14.github.io/translations/go-codereview-comments/</link>
       <pubDate>Sun, 29 Mar 2020 18:23:14 +0900</pubDate>
       
       <guid>https://knsh14.github.io/translations/go-codereview-comments/</guid>
-      <description>原文 目次 go fmt Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&amp;rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコード</description>
+      <description>原文 目次 go fmt Comment Sentences Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&amp;rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコ</description>
     </item>
     
   </channel>

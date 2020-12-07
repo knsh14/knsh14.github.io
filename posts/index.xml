@@ -88,16 +88,16 @@ TechBoosterが公開している<a href="https://github.com/TechBooster/ReVIEW-T
 </span><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="m">12.</span><span class="l">x</span><span class="w">
 </span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">npm install</span><span class="w">
-</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">        npm install
-</span><span class="sd">    - name: install reviewdog
-</span><span class="sd">      run: |
-</span><span class="sd">          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13
-</span><span class="sd">    - name: lint
-</span><span class="sd">      env:
-</span><span class="sd">        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-</span><span class="sd">      run: |
-</span><span class="sd">          $(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review
+</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">        </span><span class="w">        </span><span class="l">npm install</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">install reviewdog</span><span class="w">
+</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">          </span><span class="w">          </span><span class="l">curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s  v0.9.13</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">lint</span><span class="w">
+</span><span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">REVIEWDOG_GITHUB_API_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.GITHUB_TOKEN }}</span><span class="w">
+</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">          </span><span class="w">          </span><span class="l">$(npm bin)/textlint -f checkstyle content/posts/*.md | ./bin/reviewdog -f=checkstyle -name=textlint -reporter=github-pr-review</span><span class="w">
 </span></code></pre></div><p>masterにむけたPull Requestが更新されるたびにworkflowが実行されるようにしています。
 <code>npm install</code>を毎回キャッシュを使わずにインストールしていますが、現時点で実行時間が30秒程度なのであまり問題になっていません。</p>
 ]]></content>
@@ -236,29 +236,29 @@ textlintなどを使って機械的にレビューしていますが、細かい
 </span><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v1</span><span class="w">
 </span><span class="w">
 </span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">install hugo</span><span class="w">
-</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">        go get -u github.com/gohugoio/hugo
-</span><span class="sd">
-</span><span class="sd">    - name: setup public repo
-</span><span class="sd">      run: |
-</span><span class="sd">          git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public
-</span><span class="sd">
-</span><span class="sd">    - name: Build
-</span><span class="sd">      run: |
+</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">        </span><span class="w">        </span><span class="l">go get -u github.com/gohugoio/hugo</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">setup public repo</span><span class="w">
+</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">          </span><span class="w">          </span><span class="l">git clone --depth 1 https://USERNAME:${{ secrets.MY_GITHUB_ACCESS_TOKEN }}@github.com/USERNAME/USERNAME.github.io.git public</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build</span><span class="w">
+</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span><span class="sd">        export PATH=$PATH:`go env GOPATH`/bin
 </span><span class="sd">        git submodule init
 </span><span class="sd">        git submodule update
-</span><span class="sd">        hugo
-</span><span class="sd">
-</span><span class="sd">    - name: Push
-</span><span class="sd">      run: |
+</span><span class="sd">        hugo</span><span class="w">        
+</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Push</span><span class="w">
+</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span><span class="sd">        export MSG=`git log --format=%B -n 1 HEAD`
 </span><span class="sd">        cd public
 </span><span class="sd">        git config --local user.name &#34;NAME&#34;
 </span><span class="sd">        git config --local user.email &#34;EMAIL@gmail.com&#34;
 </span><span class="sd">        git add .
 </span><span class="sd">        git commit -m &#34;${MSG}&#34;
-</span><span class="sd">        git push origin master
+</span><span class="sd">        git push origin master</span><span class="w">        
 </span></code></pre></div><p>Goをベースにしたワークフローを利用します。
 setup public repoのステージでHugoをビルドした結果の静的ファイルが吐き出されるディレクトリを公開用のリポジトリで管理できるようにします。<br>
 Buildステージで環境変数のPATHにGoのバイナリのある場所も追加してHugoコマンドが使えるようにします。<br>

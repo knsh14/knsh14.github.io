@@ -5,10 +5,6 @@
     <link>https://knsh14.github.io/categories/</link>
     <description>Recent content in Categories on knsh14</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-ja</language>
-    
-	<atom:link href="https://knsh14.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ja-ja</language><atom:link href="https://knsh14.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
