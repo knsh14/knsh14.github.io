@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://knsh14.github.io/posts/2020-best-buyings/</loc>
+    <lastmod>2020-12-19T17:32:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://knsh14.github.io/</loc>
+    <lastmod>2020-12-19T17:32:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://knsh14.github.io/posts/</loc>
+    <lastmod>2020-12-19T17:32:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://knsh14.github.io/tags/</loc>
+    <lastmod>2020-12-19T17:32:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://knsh14.github.io/tags/untagged/</loc>
+    <lastmod>2020-12-19T17:32:07+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://knsh14.github.io/works/</loc>
     <lastmod>2020-03-29T18:25:14+09:00</lastmod>
   </url>
@@ -13,22 +38,12 @@
   </url>
   
   <url>
-    <loc>https://knsh14.github.io/</loc>
-    <lastmod>2020-03-29T18:23:14+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://knsh14.github.io/translations/</loc>
     <lastmod>2020-03-29T18:23:14+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://knsh14.github.io/posts/talk-about-guide-in-golang-tokyo-27/</loc>
-    <lastmod>2019-11-06T01:12:03+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://knsh14.github.io/posts/</loc>
     <lastmod>2019-11-06T01:12:03+09:00</lastmod>
   </url>
   
@@ -49,10 +64,6 @@
   
   <url>
     <loc>https://knsh14.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://knsh14.github.io/tags/</loc>
   </url>
   
 </urlset>
