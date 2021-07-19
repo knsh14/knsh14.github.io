@@ -11,7 +11,7 @@
 <meta itemprop="description" content="原文 目次 go fmt Comment Sentences Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコ">
 <meta itemprop="datePublished" content="2020-03-29T18:23:14+09:00" />
 <meta itemprop="dateModified" content="2020-03-29T18:23:14+09:00" />
-<meta itemprop="wordCount" content="8818">
+<meta itemprop="wordCount" content="8939">
 
 
 
@@ -370,7 +370,13 @@ APIが冗長になる上に、実装の簡潔さも失われます。</p>
 <p>最後に、幾つかのケースでは遅延クロージャで値を変更するために名前付き戻り値を指定する必要があります。
 その場合は問題ありません。</p>
 <h1 id="naked-returns">Naked Returns<a href="#naked-returns" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
-<p><a href="#named-result-parameters">Named Result Parameters</a> と同じ</p>
+<p>変数なしの <code>return</code> 文は、関数定義で宣言した変数の値を返します。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">split</span><span class="p">(</span><span class="nx">sum</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">9</span>
+    <span class="nx">y</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">-</span> <span class="nx">x</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+</code></pre></div><p><a href="#named-result-parameters">Named Result Parameters</a> でも同じ話をしています。</p>
 <h1 id="package-comments">Package Comments<a href="#package-comments" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <p>Godocで読める全てのコメントと同じようにパッケージのコメントはパッケージ節の前に空行無しで書かなければいけません。</p>
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Package math provides basic constants and mathematical functions.
@@ -429,6 +435,7 @@ APIが冗長になる上に、実装の簡潔さも失われます。</p>
 <li>関数が同時に実行されたりメソッドが呼び出された時に、レシーバの値を変更するでしょうか？値渡しではメソッドが実行されるときにレシーバのコピーを生成します。なのでメソッドの外ではレシーバへの変更が適用されません。変更がオリジナルのレシーバに適用される必要があるなら、レシーバはポインタです。</li>
 <li>レシーバが、値を変更されるかも知れない構造体、配列、スライス、その他の要素であった場合、レシーバをポインタにしたほうが、読み手にとってよりわかりやすいでしょう。</li>
 <li>レシーバが小さく、本来値型であったり(例えば <code>time.Time</code> のようなもの) 、変更するフィールドやポインタがない構造体や配列、あるいは <code>int</code> や <code>string</code> のようなシンプルな型の場合は、レシーバが値であるほうが良い場合があります。値のみのレシーバは生成されるゴミの量を減らすことができます。もし値がメソッドに渡されると、ヒープ領域にメモリを確保する代わりに、スタックメモリのコピーが走ります。(コンパイラはこのヒープメモリ確保を避けようとしますが、常には上手く行きません) プロファイラで確認する前にこの理由で値レシーバにするのは辞めましょう。</li>
+<li>レシーバの型をまぜこぜにするのはやめましょう。全てのメソッドのレシーバをポインタ型にするか値型にするかどちらか選択しましょう。</li>
 <li>これらの理由に当てはまらず、まだ迷っている場合はレシーバをポインタにしましょう。</li>
 </ul>
 <h1 id="synchronous-functions">Synchronous Functions<a href="#synchronous-functions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
@@ -474,7 +481,7 @@ Goの典型的なテスト失敗時のコードはこのようなものです。
 	</main>
 
 	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2020 <a href="https://knsh14.github.io/">Kenshi Kamata</a></p>
+		<p>&copy; 2021 <a href="https://knsh14.github.io/">Kenshi Kamata</a></p>
 		<p>
 			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://knsh14.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
 		</p>
