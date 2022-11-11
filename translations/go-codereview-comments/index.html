@@ -11,7 +11,7 @@
 <meta itemprop="description" content="原文 目次 go fmt Comment Sentences Contexts Copying Crypt Rand Declaring Empty Slices Doc Comments Don&rsquo;t Panic Error Strings Examples Goroutine Lifetimes Handle Errors Import Blank Import Dot In-Band Errors Indent Error Flow Initialisms Interfaces Line Length Mixed Caps Named Result Parameters Naked Returns Package Comments Package Names Pass Values Receiver Names Receiver Type Synchronous Functions Useful Test Failures Variable Names go fmt あなたのコ">
 <meta itemprop="datePublished" content="2020-03-29T18:23:14+09:00" />
 <meta itemprop="dateModified" content="2020-03-29T18:23:14+09:00" />
-<meta itemprop="wordCount" content="8939">
+<meta itemprop="wordCount" content="8942">
 
 
 
@@ -204,7 +204,7 @@ goroutine を無駄に長く残しておくと、予想しないメモリの使�
 もし関数がエラーを返してきたら、関数がちゃんと成功したか確認するためにチェックしてください。
 エラーをハンドリングして返すか、本当に例外的な場合のみ <code>panic</code> しましょう。</p>
 <h1 id="imports">Imports<a href="#imports" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
-<p>名前の衝突を回避するために package をリネームするのはやめましょう。
+<p>名前の衝突を回避する場合を除いて package をリネームするのはやめましょう。
 いい package はリネームする必要がないものです。
 もし衝突した場合はローカルやプロジェクト固有の package 名を変更することをおすすめします。</p>
 <p>import を空行で幾つかのグループに分けましょう。
@@ -481,7 +481,7 @@ Goの典型的なテスト失敗時のコードはこのようなものです。
 	</main>
 
 	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2021 <a href="https://knsh14.github.io/">Kenshi Kamata</a></p>
+		<p>&copy; 2022 <a href="https://knsh14.github.io/">Kenshi Kamata</a></p>
 		<p>
 			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://knsh14.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
 		</p>
